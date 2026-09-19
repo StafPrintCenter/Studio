@@ -130,9 +130,9 @@ function BatPage() {
             <h2 className="font-display mb-2 flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase">
               <Sparkles size={13} className="text-primary" /> Fiche technique
             </h2>
-            <Row label="Finition" value={finish?.name ?? "—"} />
-            <Row label="Rendu" value={finish?.hint ?? "—"} />
-            <Row label="Environnement" value={env?.name ?? "—"} />
+            <Row label="Finition" value={finish?.name ?? "-"} />
+            <Row label="Rendu" value={finish?.hint ?? "-"} />
+            <Row label="Environnement" value={env?.name ?? "-"} />
             <Row label="Fichier visuel" value={p.artwork?.name ?? "Aucun"} />
             <Row
               label="Définition"
