@@ -3,7 +3,9 @@ import { Outlet, createRootRouteWithContext, HeadContent, Scripts } from "@tanst
 import { type ReactNode } from "react";
 import { Toaster } from "sonner";
 import appCss from "../styles.css?url";
-import { Toaster } from "@/components/ui/sonner";
+import { SITE, SITE_LINK } from "@/data/site";
+import logo from "@/assets/logos.json";
+import { NotFoundComponent, ErrorComponent } from "@/components/errors";
 import { useStudio } from "@/lib/studio/store";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
