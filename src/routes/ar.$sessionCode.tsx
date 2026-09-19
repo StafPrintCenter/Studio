@@ -67,7 +67,7 @@ function ArPage() {
   const model = resolvePreset(getModel(p.model), p.preset);
 
   return (
-    <div className="flex h-dvh min-h-[32rem] flex-col bg-background text-foreground">
+    <div className="flex h-dvh min-h-128 flex-col bg-background text-foreground">
       <header className="flex h-14 items-center gap-3 border-b border-border px-4">
         <Link
           to="/"
