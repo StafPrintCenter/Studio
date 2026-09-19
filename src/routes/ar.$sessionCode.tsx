@@ -8,8 +8,8 @@ import { loadShared, type SharedRecord } from "@/lib/studio/project";
 import type { ProjectState } from "@/lib/studio/store";
 import { SITE } from "@/data/site";
 
-const PAGE_TITLE = `${SITE.tool} - Outils de modélisation 3D et de réalité augmentée | ${SITE.name}`;
-const PAGE_DESC = `Studio 3D professionnel pour prévisualiser vos supports imprimés, générer un BAT et les voir en réalité augmentée ${SITE.name}.`;
+const PAGE_TITLE = `Réalité augmentée - ${SITE.tool} | ${SITE.name}`;
+const PAGE_DESC = `"Visualisez votre support imprimé en réalité augmentée, à l'échelle 1:1, directement depuis votre mobile. | ${SITE.name}.`;
 
 export const Route = createFileRoute("/ar/$sessionCode")({
   ssr: false,
