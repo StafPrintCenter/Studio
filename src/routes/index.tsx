@@ -13,10 +13,7 @@ export const Route = createFileRoute("/")({
       { title: PAGE_TITLE },
       { name: "description", content: PAGE_DESC },
       { property: "og:title", content: PAGE_TITLE },
-      {
-        property: "og:description", content:
-          PAGE_DESC
-      },
+      { property: "og:description", content: PAGE_DESC },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
