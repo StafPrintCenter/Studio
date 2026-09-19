@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BadgeCheck, Box, CheckCircle2, Download, Mail, Ruler, Share2, Sparkles, Smartphone } from "lucide-react";
 import { toast } from "sonner";
 import { Scene3D } from "@/components/studio/scene/Scene3D";
-import { ProjectFileImport } from "@/components/studio/ProjectFileImport";
+import { ProjectFileImport } from "@/components/studio";
 import { Button } from "@/components/ui/button";
 import { getModel, resolvePreset, FINISHES, ENVIRONMENTS } from "@/lib/studio/models";
 import { downloadBlob, loadShared, projectFile, saveShared, slugify, updateShared, type SharedRecord } from "@/lib/studio/project";
