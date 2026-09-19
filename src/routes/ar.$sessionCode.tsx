@@ -7,6 +7,7 @@ import { getModel, resolvePreset } from "@/lib/studio/models";
 import { loadShared, type SharedRecord } from "@/lib/studio/project";
 import type { ProjectState } from "@/lib/studio/store";
 import { SITE } from "@/data/site";
+import { SpcMobLogo } from "@/components/studio";
 
 const PAGE_TITLE = `Réalité augmentée - ${SITE.tool} | ${SITE.name}`;
 const PAGE_DESC = `Visualisez votre support imprimé en réalité augmentée, à l'échelle 1:1, directement depuis votre mobile. | ${SITE.name}.`;
@@ -74,7 +75,7 @@ function ArPage() {
           <ArrowLeft size={16} />
         </Link>
         <div className="from-primary to-primary-deep flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br">
-          <Box size={17} className="text-primary-foreground" />
+          <SpcMobLogo className="mx-auto h-12 w-auto" />
         </div>
         <div className="leading-tight">
           <div className="font-display text-sm font-bold">Mode réalité augmentée</div>
@@ -84,6 +85,11 @@ function ArPage() {
         </div>
         <span className="flex-1" />
         <ProjectFileImport onImport={setImportedProject} compact />
+        <IconButton
+          label={p.layout.theme === "light" ? "Thème sombre" : "Thème clair"}
+          icon={p.layout.theme === "light" ? <Moon size={15} /> : <Sun size={15} />}
+          onClick={p.onTheme}
+        />
       </header>
 
       <main className="relative min-h-72 flex-1">
