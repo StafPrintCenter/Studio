@@ -11,7 +11,7 @@ export const Route = createFileRoute("/ar/$sessionCode")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Réalité augmentée — SPC 3D Studio" },
+      { title: "Réalité augmentée - SPC 3D Studio" },
       {
         name: "description",
         content:
