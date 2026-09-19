@@ -11,7 +11,7 @@ export const Route = createFileRoute("/")({
         content:
           "Plaquez vos visuels sur des supports imprimés en 3D temps réel : roll-up, bâche, enseigne, packaging. Finitions PBR, BAT 3D et réalité augmentée.",
       },
-      { property: "og:title", content: "SPC 3D Studio & AR — STAF PRINT CENTER" },
+      { property: "og:title", content: "SPC 3D Studio & AR - STAF PRINT CENTER" },
       {
         property: "og:description",
         content:
