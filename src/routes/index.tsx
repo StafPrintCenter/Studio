@@ -7,9 +7,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "SPC 3D Studio & AR - Simulateur 3D STAF PRINT CENTER" },
       {
-        name: "description",
-        content:
-          "Plaquez vos visuels sur des supports imprimés en 3D temps réel : roll-up, bâche, enseigne, packaging. Finitions PBR, BAT 3D et réalité augmentée.",
+        name: "description", content:
+          PAGE_DESC
       },
       { property: "og:title", content: "SPC 3D Studio & AR - STAF PRINT CENTER" },
       {
