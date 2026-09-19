@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ArSessionCodeRouteImport } from './routes/ar.$sessionCode'
 import { Route as BatBatIdRouteImport } from './routes/bat.$batId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ArSessionCodeRoute = ArSessionCodeRouteImport.update({
@@ -31,30 +37,34 @@ const BatBatIdRoute = BatBatIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/$sessionCode': typeof ArSessionCodeRoute
   '/bat/$batId': typeof BatBatIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/$sessionCode': typeof ArSessionCodeRoute
   '/bat/$batId': typeof BatBatIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ar/$sessionCode': typeof ArSessionCodeRoute
   '/bat/$batId': typeof BatBatIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ar/$sessionCode' | '/bat/$batId'
+  fullPaths: '/' | '/sitemap.xml' | '/ar/$sessionCode' | '/bat/$batId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ar/$sessionCode' | '/bat/$batId'
-  id: '__root__' | '/' | '/ar/$sessionCode' | '/bat/$batId'
+  to: '/' | '/sitemap.xml' | '/ar/$sessionCode' | '/bat/$batId'
+  id: '__root__' | '/' | '/sitemap.xml' | '/ar/$sessionCode' | '/bat/$batId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ArSessionCodeRoute: typeof ArSessionCodeRoute
   BatBatIdRoute: typeof BatBatIdRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ar/$sessionCode': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ArSessionCodeRoute: ArSessionCodeRoute,
   BatBatIdRoute: BatBatIdRoute,
 }
