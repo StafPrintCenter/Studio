@@ -72,7 +72,7 @@ function BatPage() {
   const env = ENVIRONMENTS.find((e) => e.id === p.environment);
   const approved = record.status === "approved";
   const details = [
-    `BAT 3D validé — ${p.name}`,
+    `BAT 3D validé - ${p.name}`,
     `Support : ${model.name}`,
     `Dimensions : ${model.dims.w} × ${model.dims.h}${model.dims.d ? ` × ${model.dims.d}` : ""} cm`,
     `Finition : ${finish?.name ?? "—"}`,
