@@ -1,43 +1,99 @@
-# STAF PRINT 3D Studio
+# STAF PRINT CENTER - Plateforme Web (V1)
 
-Créer l'application web professionnelle « SPC 3D Studio & AR » (studio.stafprint.com) pour l'écosystème STAF PRINT CENTER.
+Ce dépôt contient le code source de la plateforme web officielle de **STAF PRINT CENTER** (`stafprint.com`), studio de création, d'impression numérique et de formation basé à Porto-Novo, Bénin - depuis 2019.
 
-Spécifications complètes :
-1. Identité STAF PRINT : Thème sombre (#0f172a / #020617) et clair (#fdfbf7), accent orange ambre (#f97316, #ea580c), typographies modernes (Space Grotesk, Inter, JetBrains Mono pour les valeurs). UI de logiciel pro compacte, basée sur icônes avec tooltips (Lucide React), transitions fluides.
-2. Architecture du Studio :
-   - Toolbar supérieure : Logo SPC 3D Studio, sélecteur modèle, Importer (.studio3d), Exporter projet, Partager, Auto-rotation, Reset caméra, Plein écran, Générer BAT, Mode AR, Paramètres.
-   - Panneau gauche (redimensionnable & rétractable avec drag handle + bouton collapse) : Catalogue des modèles STAF PRINT (Roll-up kakemono, Bâche publicitaire extérieure, Enseigne drapeau / façade, Boîte packaging premium, Affiche encadrée, Sac kraft, etc.) avec dimensions, description et presets.
-   - Scène 3D centrale Three.js / React Three Fiber / Drei : OrbitControls fluides, rotation automatique togglable avec contrôle de vitesse, ombres réalistes, dropzone direct canvas pour glisser-déposer une image directement dans la scène 3D.
-   - Panneau droit (redimensionnable & rétractable avec drag handle + bouton collapse) :
-     * Visuel à plaquer : import de fichier image (PNG, JPG, WebP, SVG), dropzone, preview vignette, nom, dimensions et bouton Remplacer.
-     * Transformation UV : Sliders et inputs numériques directs synchronisés (clic sur la valeur numérique pour l'éditer inline avec validation Enter/Blur) pour Échelle, Position X, Position Y, Rotation, Répétition Tile X/Y, et bouton Réinitialiser UV aux valeurs par défaut.
-     * Finitions & Matériaux PBR : Mat, Brillant, Dorure à chaud (or métallique brillant), Vernis sélectif avec import de masque N&B.
-     * Environnements 3D : Studio photo (sol, softboxes, accessoires), Bureau moderne (bureau, écran, étagère), Façade urbaine / Rue, Showroom d'exposition.
-     * Export du rendu : Capture PNG haute résolution (avec ou sans fond transparent).
-     * Partager & Exporter : Téléchargement du projet au format `.studio3d` (JSON complet), import/restauration de projet, partage avec QR Code et Web Share API.
-     * Actions BAT & AR.
-3. Module BAT 3D : Vue dédiée (/bat/:batId) épurée pour les clients avec visualisation 3D, inspection des finitions, dimensions, fiche technique et bouton de validation BAT.
-4. Module Réalité Augmentée : Vue dédiée (/ar/:sessionCode) avec support <model-viewer> / WebXR pour visualiser les supports en AR à l'échelle 1:1 sur mobile.
-5. Persistance locale : Sauvegarde automatique de l'état (IndexedDB / localStorage) et persistance de la disposition des panneaux (avec bouton "Réinitialiser la disposition").
-6. Bannière & CTA vers l'écosystème STAF PRINT : Liens discrets vers brief.stafprint.com et tools.stafprint.com.
+> L'empreinte de votre succès.
 
-This project was built with [Lovable](https://lovable.dev).
+---
 
-## Build with Lovable
+## 📌 Présentation du projet
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/8ddaf05f-7b8b-4d79-85f4-29a13c6ea1d1).
+La plateforme présente l'activité de STAF PRINT CENTER, valorise ses réalisations et facilite la prise de contact avec les clients, tout en donnant accès à un espace admin, un espace étudiant et des outils dédiés (QR codes, newsletter).
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Elle s'articule autour des pages suivantes :
 
-## Development
+- **Accueil** - Présentation du studio, argumentaire (qualité premium, délais courts, prix accessibles, expertise locale), avis Google, formulaire de contact / demande de devis.
+- **Services** (`/services`) - Catalogue des prestations d'impression, de design graphique et d'identité visuelle, filtrable par catégorie.
+- **Réalisations** (`/projects`) - Portfolio des projets clients, filtrable et paginé.
+- **Formations** (`/trainings`) - Programmes de formation (design, web, numérique) avec pré-inscription.
+- **Blog** (`/articles`) - Contenus métiers et actualités du studio.
+- **FAQs** (`/faqs`) - Questions fréquentes.
+- **Offres d'emploi** (`/careers/offers`) - Offres d'emploi, candidatures et demandes de stage.
+- **Contact** (`/#contact`) - Formulaire de demande de devis avec sélection du service souhaité.
+- **Newsletter** (`/tools/newsletter`) - Inscription à la newsletter.
+- **Mentions légales / Confidentialité / CGV** (`/legal/*`).
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+---
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## 🛠️ Stack technique
+
+- **Frontend :**
+  React + TanStack Router + TanStack Query, décliné sur plusieurs sous-domaines :
+  - `stafprint.com` - site public
+  - `admin.stafprint.com` - back-office (gestion des services, projets, formations, offres, avis clients, bannières/annonces, newsletter)
+  - `student.stafprint.com` - espace étudiant / formations
+  - `go.stafprint.com` - liens courts / QR codes
+
+- **Backend :**
+  API REST Laravel 11, PHP 8.4, hébergement mutualisé alwaysdata.
+  Modules principaux : newsletter, avis clients (formulaire dynamique), pré-inscription aux formations, offres d'emploi & candidatures, demandes de stage, annonces/bannières, gestion des QR codes.
+
+- **Performance & SEO :**
+  - Structure optimisée pour les moteurs de recherche
+  - Metadata Open Graph / Twitter Card
+  - Données structurées Schema.org
+  - Optimisation des ressources statiques (CDN jsDelivr pour les assets)
+
+- **Intégrations :**
+  - Formulaires de contact et de demande de devis (avec sélection de service)
+  - Intégration WhatsApp pour la communication directe
+  - Réseaux sociaux : Facebook, Instagram, LinkedIn, X
+
+---
+
+## 🎯 Objectifs V1
+
+- Présenter clairement l'offre STAF PRINT CENTER (print, design, formations)
+- Améliorer la visibilité digitale de l'entreprise
+- Faciliter la génération de prospects via les devis et WhatsApp
+- Valoriser les réalisations, avis clients et l'expertise du studio
+- Centraliser la gestion opérationnelle (back-office admin) et l'espace étudiant
+
+---
+
+## 📂 Organisation du projet
+
 ```
+/
+├── apps/
+│   ├── web/          # Frontend public (stafprint.com)
+│   ├── admin/         # Back-office (admin.stafprint.com)
+│   └── student/        # Espace étudiant (student.stafprint.com)
+├── api/               # Backend Laravel 11 (REST API)
+├── packages/
+│   └── shared/         # Types, composants et utilitaires partagés (pattern api-frontend-sync)
+└── public/            # Fichiers publics / assets statiques
+```
+
+---
+
+## 🚀 Déploiement
+
+- Site public : https://stafprint.com
+- Back-office : https://admin.stafprint.com
+- Espace étudiant : https://student.stafprint.com
+- Liens courts / QR codes : https://go.stafprint.com
+
+---
+
+## 📍 Informations
+
+**STAF PRINT CENTER**
+Studio de création & impression
+Porto-Novo, Bénin · Depuis 2019
+
+- 📞 +229 01 66 52 36 39
+- 💬 WhatsApp : +229 01 60 30 06 07
+- ✉️ contact@stafprint.com
+
+> L'empreinte de votre succès.
