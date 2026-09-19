@@ -114,7 +114,7 @@ export function ArViewer({ project }: { project: ProjectState }) {
         })
       ) : (
         <div className="relative h-full min-h-72 w-full">
-          <Scene3D project={{ ...project, autoRotate: true }} className="!absolute inset-0" />
+          <Scene3D project={{ ...project, autoRotate: true }} className="absolute inset-0" />
           <div className="pointer-events-none absolute right-3 bottom-3 left-3 flex justify-center">
             <span className="rounded-md border border-border/60 bg-surface/85 px-3 py-1.5 text-center text-[11px] text-muted-foreground backdrop-blur">
               {failed ? "Aperçu 3D disponible - placement AR indisponible" : "Préparation du placement AR…"}
