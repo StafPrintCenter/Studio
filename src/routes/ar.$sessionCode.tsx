@@ -76,7 +76,7 @@ function ArPage() {
         >
           <ArrowLeft size={16} />
         </Link>
-        <div className="from-primary to-primary-deep flex h-8 w-8 items-center justify-center rounded-md bg-gradient-to-br">
+        <div className="from-primary to-primary-deep flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br">
           <Box size={17} className="text-primary-foreground" />
         </div>
         <div className="leading-tight">
