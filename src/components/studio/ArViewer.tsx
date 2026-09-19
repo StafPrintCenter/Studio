@@ -1,8 +1,7 @@
 import { createElement, useCallback, useEffect, useState } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { GLTFExporter } from "three/examples/jsm/exporters/GLTFExporter.js";
-import { Support } from "./scene/Support";
-import { Scene3D } from "./scene/Scene3D";
+import { Support, Scene3D } from "./scene";
 import { getModel, resolvePreset } from "@/lib/studio/models";
 import type { ProjectState } from "@/lib/studio/store";
 
