@@ -5,7 +5,7 @@ import { Support, Scene3D } from "./scene";
 import { getModel, resolvePreset } from "@/lib/studio/models";
 import type { ProjectState } from "@/lib/studio/store";
 
-/** Renders the support offscreen and exports it as a GLB blob URL for <model-viewer>. */
+/** Renders the support offscreen and exports it as a GLB blob URL for <model-viewer>.v */
 function GlbBuilder({
   project,
   onReady,
