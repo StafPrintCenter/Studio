@@ -119,7 +119,7 @@ export function Toolbar(p: Props) {
           <button
             type="button"
             aria-label="Paramètres"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer"
           >
             <Settings2 size={15} />
           </button>
