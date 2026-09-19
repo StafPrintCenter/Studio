@@ -15,11 +15,10 @@ export const Route = createFileRoute("/")({
         name: "description", content:
           PAGE_DESC
       },
-      { property: "og:title", content: "SPC 3D Studio & AR - STAF PRINT CENTER" },
+      { property: "og:title", content: PAGE_TITLE },
       {
-        property: "og:description",
-        content:
-          "Simulateur 3D professionnel pour supports imprimés : finitions, environnements, BAT client et visualisation AR à l'échelle 1:1.",
+        property: "og:description", content:
+          PAGE_DESC
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
