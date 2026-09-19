@@ -16,16 +16,10 @@ export const Route = createFileRoute("/bat/$batId")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "BAT 3D — SPC 3D Studio" },
-      {
-        name: "description",
-        content: "Bon à tirer 3D : inspectez votre support imprimé et validez la production.",
-      },
-      { property: "og:title", content: "BAT 3D — STAF PRINT CENTER" },
-      {
-        property: "og:description",
-        content: "Visualisez et validez votre bon à tirer en 3D avant impression.",
-      },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESC },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESC },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
