@@ -17,7 +17,7 @@ export const Route = createFileRoute("/ar/$sessionCode")({
         content:
           "Visualisez votre support imprimé en réalité augmentée, à l'échelle 1:1, directement depuis votre mobile.",
       },
-      { property: "og:title", content: "Mode AR — STAF PRINT CENTER" },
+      { property: "og:title", content: "Mode AR - STAF PRINT CENTER" },
       {
         property: "og:description",
         content: "Placez votre roll-up, bâche ou enseigne dans votre espace réel en AR.",
