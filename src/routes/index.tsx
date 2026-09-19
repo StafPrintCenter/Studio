@@ -5,7 +5,7 @@ export const Route = createFileRoute("/")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "SPC 3D Studio & AR — Simulateur 3D STAF PRINT CENTER" },
+      { title: "SPC 3D Studio & AR - Simulateur 3D STAF PRINT CENTER" },
       {
         name: "description",
         content:
