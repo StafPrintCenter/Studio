@@ -170,7 +170,7 @@ export function InspectorPanel(p: Props) {
             <Upload size={18} className="text-primary" />
             <span className="text-xs font-medium">Déposer une image</span>
             <span className="text-[11px] text-muted-foreground">
-              PNG, JPG, WebP ou SVG — ou cliquer
+              PNG, JPG, WebP ou SVG - ou cliquer
             </span>
           </button>
         )}
