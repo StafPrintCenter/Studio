@@ -16,15 +16,7 @@ import { Scene3D } from "@/components/studio/scene/Scene3D";
 import { ProjectFileImport } from "@/components/studio/ProjectFileImport";
 import { Button } from "@/components/ui/button";
 import { getModel, resolvePreset, FINISHES, ENVIRONMENTS } from "@/lib/studio/models";
-import {
-  downloadBlob,
-  loadShared,
-  projectFile,
-  saveShared,
-  slugify,
-  updateShared,
-  type SharedRecord,
-} from "@/lib/studio/project";
+import { downloadBlob, loadShared, projectFile, saveShared, slugify, updateShared, type SharedRecord } from "@/lib/studio/project";
 import { SITE } from "@/data/site";
 
 const PAGE_TITLE = `${SITE.tool} - Outils de modélisation 3D et de réalité augmentée | ${SITE.name}`;
