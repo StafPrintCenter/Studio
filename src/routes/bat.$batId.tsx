@@ -1,16 +1,6 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  BadgeCheck,
-  Box,
-  CheckCircle2,
-  Download,
-  Mail,
-  Ruler,
-  Share2,
-  Sparkles,
-  Smartphone,
-} from "lucide-react";
+import { BadgeCheck, Box, CheckCircle2, Download, Mail, Ruler, Share2, Sparkles, Smartphone } from "lucide-react";
 import { toast } from "sonner";
 import { Scene3D } from "@/components/studio/scene/Scene3D";
 import { ProjectFileImport } from "@/components/studio/ProjectFileImport";
