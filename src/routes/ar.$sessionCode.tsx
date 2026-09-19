@@ -9,7 +9,7 @@ import type { ProjectState } from "@/lib/studio/store";
 import { SITE } from "@/data/site";
 
 const PAGE_TITLE = `Réalité augmentée - ${SITE.tool} | ${SITE.name}`;
-const PAGE_DESC = `"Visualisez votre support imprimé en réalité augmentée, à l'échelle 1:1, directement depuis votre mobile. | ${SITE.name}.`;
+const PAGE_DESC = `Visualisez votre support imprimé en réalité augmentée, à l'échelle 1:1, directement depuis votre mobile. | ${SITE.name}.`;
 
 export const Route = createFileRoute("/ar/$sessionCode")({
   ssr: false,
