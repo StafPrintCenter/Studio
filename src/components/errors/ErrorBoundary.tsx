@@ -1,91 +1,65 @@
 import { useRouter, Link } from "@tanstack/react-router";
+import { AlertCircle, RefreshCw, Home } from "lucide-react";
 import { useEffect } from "react";
-import { Zap, RotateCcw, LayoutGrid, Radio, ShieldAlert } from "lucide-react";
 import { reportError } from "@/lib/error/reporting";
 
 export function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+  console.error(error);
   const router = useRouter();
 
   useEffect(() => {
-    reportError(error, { boundary: "spc_arcade_execution_failure" });
+    reportError(error, { boundary: "brief_root_error_component" });
   }, [error]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center p-4 sm:p-8 font-sans text-foreground overflow-hidden">
+    <div className="relative flex min-h-screen items-center justify-center bg-background px-6 py-12 overflow-hidden bg-grain">
+      {/* Decorative shapes */}
+      <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-destructive/5 blur-[100px] pointer-events-none" />
 
-      {/* Surcharge Thermique Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-96 rounded-full bg-destructive/20 blur-[130px] pointer-events-none" />
-
-      {/* Main Glass Panel */}
-      <div className="relative z-10 w-full max-w-2xl rounded-4xl border border-destructive/30 bg-card/40 p-8 sm:p-12 shadow-2xl backdrop-blur-2xl">
-
-        {/* Warning Indicator */}
-        <div className="flex items-center justify-between gap-4 mb-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-destructive/40 bg-destructive/10 px-4 py-1.5 text-xs font-bold text-destructive">
-            <Zap className="size-3.5 animate-bounce" />
-            <span>SURCHARGE DU SYSTÈME</span>
-          </div>
-          <div className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-            <Radio className="size-3 text-destructive animate-pulse" />
-            <span>CRITICAL_FAIL</span>
-          </div>
-        </div>
-
-        {/* Core Content */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-4">
-            <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-destructive/15 border border-destructive/30 text-destructive shadow-inner">
-              <ShieldAlert className="size-7" />
+      <div className="relative z-10 max-w-xl w-full">
+        <div className="rounded-3xl border border-border bg-card p-8 md:p-10 shadow-xl backdrop-blur-sm">
+          {/* Header */}
+          <div className="flex items-center gap-4 mb-6">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-destructive/10 text-destructive">
+              <AlertCircle className="h-6 w-6" />
             </div>
             <div>
-              <h1 className="font-display text-2xl sm:text-3xl font-extrabold text-foreground tracking-tight">
-                Anomalie lors du défi
+              <h1 className="text-xl md:text-2xl font-bold text-foreground font-display">
+                Une erreur est survenue
               </h1>
               <p className="text-sm text-muted-foreground mt-0.5">
-                Le moteur de jeu a interrompu la session suite à une erreur critique.
+                Le rendu de cette page a rencontré un obstacle technique.
               </p>
             </div>
           </div>
 
-          {/* Minimalist Error Container */}
-          <div className="rounded-2xl border border-border/80 bg-background/80 p-5 backdrop-blur-md shadow-inner space-y-2">
-            <div className="flex items-center justify-between font-mono text-[11px] text-muted-foreground border-b border-border/50 pb-2">
-              <span>MODULE EXCEPTION</span>
-              <span className="text-rare font-bold">{error?.name || "RuntimeError"}</span>
-            </div>
-            <p className="font-mono text-xs text-destructive font-semibold pt-1 leading-relaxed">
-              {error?.message || "Une erreur inattendue est survenue pendant l'exécution du composant."}
-            </p>
-            {error?.stack && (
-              <div className="mt-2 pt-2 border-t border-border/40 font-mono text-[10px] text-muted-foreground max-h-28 overflow-y-auto whitespace-pre-wrap">
-                {error.stack}
-              </div>
-            )}
+          {/* Details (Visual error output) */}
+          <div className="my-6 rounded-2xl bg-muted p-4 border border-border/50 max-h-40 overflow-y-auto font-mono text-xs text-muted-foreground leading-relaxed">
+            <p className="font-semibold text-foreground mb-1">{error?.name || "Error"}</p>
+            <p className="whitespace-pre-wrap">{error?.message || "Erreur inconnue."}</p>
+          </div>
+
+          {/* Actions */}
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-end gap-3">
+            <button
+              onClick={() => {
+                router.invalidate();
+                reset();
+              }}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-all duration-300 hover:bg-primary/95 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+            >
+              <RefreshCw className="h-4 w-4" />
+              Réessayer
+            </button>
+            <Link
+              to="/"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl border border-input bg-card px-5 py-3 text-sm font-semibold text-foreground transition-all duration-300 hover:bg-muted hover:-translate-y-0.5 active:translate-y-0"
+            >
+              <Home className="h-4 w-4" />
+              Retourner à l'accueil
+            </Link>
           </div>
         </div>
-
-        {/* Buttons */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-border/80 bg-background/80 hover:bg-muted px-6 py-3.5 text-xs font-bold text-foreground transition active:scale-95"
-          >
-            <LayoutGrid className="size-4 text-muted-foreground" />
-            Menu des Défis
-          </Link>
-
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-destructive px-6 py-3.5 text-xs font-bold text-destructive-foreground shadow-lg shadow-destructive/25 transition hover:opacity-90 active:scale-95 cursor-pointer"
-          >
-            <RotateCcw className="size-4" />
-            Relancer la simulation
-          </button>
-        </div>
-
       </div>
     </div>
   );
