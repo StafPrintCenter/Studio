@@ -98,7 +98,7 @@ function ArPage() {
         <div className="num flex items-center gap-1.5 text-muted-foreground">
           <Ruler size={12} className="text-primary" />
           {model.dims.w} × {model.dims.h}
-          {model.dims.d ? ` × ${model.dims.d}` : ""} cm — échelle 1:1
+          {model.dims.d ? ` × ${model.dims.d}` : ""} cm - échelle 1:1
         </div>
         <p className="text-[11px] text-muted-foreground">
           Sur mobile, touchez l'icône AR pour placer le support dans votre espace réel
