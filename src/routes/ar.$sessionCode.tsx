@@ -89,7 +89,7 @@ function ArPage() {
         <ProjectFileImport onImport={setImportedProject} compact />
       </header>
 
-      <main className="relative min-h-[18rem] flex-1">
+      <main className="relative min-h-72 flex-1">
         <ArViewer project={p} />
       </main>
 
