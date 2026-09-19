@@ -51,6 +51,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "sitemap", type: "application/xml", href: "/sitemap.xml" },
+    ],
+    scripts: [
+      /* Schéma WebApplication pour l'outil de studio */
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "@id": `${SITE_LINK.studioUrl}/#webapp`,
+          url: SITE_LINK.studioUrl,
+          name: `${SITE.tool}`,
+          applicationCategory: "BusinessApplication",
+          operatingSystem: "All",
+          description: PAGE_DESC,
+          inLanguage: "fr-BJ",
+          publisher: {
+            "@type": "Organization",
+            name: SITE.name,
+            logo: { "@type": "ImageObject", url: `${logo.meta}` }
+          }
+        }),
+      }
     ],
   }),
   shellComponent: RootShell,
