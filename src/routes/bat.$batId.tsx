@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BadgeCheck, Box, CheckCircle2, Download, Mail, Ruler, Share2, Sparkles, Smartphone } from "lucide-react";
+import { BadgeCheck, ArrowLeft, CheckCircle2, Download, Mail, Ruler, Share2, Sparkles, Smartphone } from "lucide-react";
 import { toast } from "sonner";
 import { Scene3D } from "@/components/studio/scene";
 import { ProjectFileImport } from "@/components/studio";
@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { getModel, resolvePreset, FINISHES, ENVIRONMENTS } from "@/lib/studio/models";
 import { downloadBlob, loadShared, projectFile, saveShared, slugify, updateShared, type SharedRecord } from "@/lib/studio/project";
 import { SITE } from "@/data/site";
+import { SpcMobLogo } from "@/components/studio";
 
 const PAGE_TITLE = `BAT 3D - ${SITE.tool} | ${SITE.name}`;
 const PAGE_DESC = `Bon à tirer 3D : inspectez votre support imprimé et validez la production. | ${SITE.name}.`;
@@ -84,8 +85,15 @@ function BatPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <header className="flex h-14 items-center gap-3 border-b border-border px-4">
-        <div className="from-primary to-primary-deep flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br">
-          <Box size={17} className="text-primary-foreground" />
+        <Link
+          to="/"
+          className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground hover:bg-accent hover:text-foreground"
+          aria-label="Retour au studio"
+        >
+          <ArrowLeft size={16} />
+        </Link>
+        <div className="flex h-8 w-8 items-center justify-center ">
+          <SpcMobLogo className="mx-auto h-12 w-auto" />
         </div>
         <div className="leading-tight">
           <div className="font-display text-sm font-bold">Bon à tirer 3D</div>
