@@ -1,19 +1,5 @@
 import { useRef, useState, type ReactNode } from "react";
-import {
-  Image as ImageIcon,
-  Move3d,
-  Sparkles,
-  Mountain,
-  Download,
-  Share2,
-  QrCode,
-  FileCheck2,
-  Smartphone,
-  RotateCcw,
-  Upload,
-  ChevronDown,
-  Trash2,
-} from "lucide-react";
+import { Image as ImageIcon, Move3d, Sparkles, Mountain, Download, Share2, QrCode, FileCheck2, Smartphone, RotateCcw, Upload, ChevronDown, Trash2 } from "lucide-react";
 import { NumericControl } from "./NumericControl";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
