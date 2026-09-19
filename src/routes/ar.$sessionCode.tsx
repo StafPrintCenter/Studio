@@ -16,13 +16,9 @@ export const Route = createFileRoute("/ar/$sessionCode")({
   head: () => ({
     meta: [
       { title: PAGE_TITLE },
-      {
-        name: "description", content: PAGE_DESC
-      },
+      { name: "description", content: PAGE_DESC },
       { property: "og:title", content: PAGE_TITLE },
-      {
-        property: "og:description", content: PAGE_DESC
-      },
+      { property: "og:description", content: PAGE_DESC },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
