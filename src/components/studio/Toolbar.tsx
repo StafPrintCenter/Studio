@@ -116,13 +116,13 @@ export function Toolbar(p: Props) {
 
       <Popover>
         <PopoverTrigger asChild>
-          <button
-            type="button"
-            aria-label="Paramètres"
-            className="inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-accent hover:text-foreground cursor-pointer"
-          >
-            <Settings2 size={15} />
-          </button>
+          <IconButton
+            label="Paramètres"
+            icon={<Settings2 size={15} />}
+          // active={p.project.autoRotate}
+          // onClick={p.onToggleRotate}
+          />
+
         </PopoverTrigger>
         <PopoverContent align="end" className="w-64 space-y-3">
           <p className="font-display text-[11px] font-semibold tracking-widest uppercase">
