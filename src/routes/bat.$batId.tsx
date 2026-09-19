@@ -222,7 +222,7 @@ function BatPage() {
           )}
 
           <p className="text-[11px] text-muted-foreground">
-            Rendu 3D indicatif — les couleurs à l'écran peuvent différer de l'impression finale.
+            Rendu 3D indicatif - les couleurs à l'écran peuvent différer de l'impression finale.
           </p>
         </aside>
       </div>
