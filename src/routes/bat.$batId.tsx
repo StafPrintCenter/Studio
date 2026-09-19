@@ -78,8 +78,8 @@ function BatPage() {
     `Finition : ${finish?.name ?? "-"}`,
     `Référence : ${record.id}`,
   ].join("\n");
-  const whatsappUrl = `https://wa.me/2290160300607?text=${encodeURIComponent(details)}`;
-  const mailUrl = `mailto:contact@stafprint.com?subject=${encodeURIComponent(`BAT validé - ${p.name}`)}&body=${encodeURIComponent(`${details}\n\nLe fichier .studio3d a été téléchargé séparément et peut être joint à ce message.`)}`;
+  const whatsappUrl = `${SITE.whatsappLink}?text=${encodeURIComponent(details)}`;
+  const mailUrl = `mailto:${SITE.email}?subject=${encodeURIComponent(`BAT validé - ${p.name}`)}&body=${encodeURIComponent(`${details}\n\nLe fichier .studio3d a été téléchargé séparément et peut être joint à ce message.`)}`;
 
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
