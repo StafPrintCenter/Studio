@@ -160,7 +160,7 @@ export async function shareUrl(title: string, url: string) {
 }
 
 export function formatBytes(bytes: number) {
-  if (!bytes) return "—";
+  if (!bytes) return "-";
   const units = ["o", "Ko", "Mo"];
   let v = bytes;
   let i = 0;
