@@ -1,30 +1,10 @@
-import {
-  Box,
-  Upload,
-  Download,
-  Share2,
-  RefreshCw,
-  Crosshair,
-  Maximize2,
-  FileCheck2,
-  Smartphone,
-  Settings2,
-  Sun,
-  Moon,
-  LayoutTemplate,
-} from "lucide-react";
+import { Box, Upload, Download, Share2, Rotate3d, Crosshair, Maximize2, FileCheck2, Smartphone, Settings2, Sun, Moon, LayoutTemplate } from "lucide-react";
 import { IconButton } from "./IconButton";
 import { NumericControl } from "./NumericControl";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MODELS, type ModelKind } from "@/lib/studio/models";
 import type { LayoutState, ProjectState } from "@/lib/studio/store";
 
@@ -51,7 +31,7 @@ export function Toolbar(p: Props) {
   return (
     <header className="flex h-12 shrink-0 items-center gap-2 border-b border-border bg-surface/80 px-2 backdrop-blur">
       <div className="flex items-center gap-2 pr-1">
-        <div className="from-primary to-primary-deep flex h-7 w-7 items-center justify-center rounded-md bg-gradient-to-br">
+        <div className="from-primary to-primary-deep flex h-7 w-7 items-center justify-center rounded-md bg-linear-to-br">
           <Box size={16} className="text-primary-foreground" />
         </div>
         <div className="hidden leading-none sm:block">
@@ -67,7 +47,7 @@ export function Toolbar(p: Props) {
       <div className="mx-1 h-6 w-px bg-border" />
 
       <Select value={p.project.model} onValueChange={(v) => p.onModel(v as ModelKind)}>
-        <SelectTrigger className="h-8 w-[190px] text-xs">
+        <SelectTrigger className="h-8 w-47.5 text-xs">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -90,12 +70,12 @@ export function Toolbar(p: Props) {
 
       <IconButton
         label="Importer un projet .studio3d"
-        icon={<Upload size={15} />}
+        icon={<Download size={15} />}
         onClick={p.onImportProject}
       />
       <IconButton
         label="Exporter le projet"
-        icon={<Download size={15} />}
+        icon={<Upload size={15} />}
         onClick={p.onExportProject}
       />
       <IconButton label="Partager" icon={<Share2 size={15} />} onClick={p.onShare} />
@@ -104,7 +84,7 @@ export function Toolbar(p: Props) {
 
       <IconButton
         label="Auto-rotation"
-        icon={<RefreshCw size={15} />}
+        icon={<Rotate3d size={15} />}
         active={p.project.autoRotate}
         onClick={p.onToggleRotate}
       />
