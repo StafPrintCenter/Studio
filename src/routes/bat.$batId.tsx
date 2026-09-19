@@ -191,7 +191,7 @@ function BatPage() {
                     }
                   }
                   downloadBlob(file, file.name);
-                  toast.info("Fichier téléchargé — vous pouvez maintenant le joindre au message");
+                  toast.info("Fichier téléchargé - vous pouvez maintenant le joindre au message");
                 }}
               >
                 <Share2 size={15} /> Partager le fichier .studio3d
