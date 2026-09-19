@@ -1,6 +1,6 @@
 export const SITE = {
   name: "STAF PRINT CENTER",
-  tool: "SPC Arcade",
+  tool: "SPC 3D Studio",
   slogan: "L'empreinte de votre succès",
   activity: "Studio de design et d'impression",
   manager: "Steve Aster Afovo",
