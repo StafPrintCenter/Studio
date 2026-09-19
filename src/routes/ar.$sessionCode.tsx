@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Box, Ruler, ArrowLeft } from "lucide-react";
+import { Ruler, ArrowLeft } from "lucide-react";
 import { ArViewer } from "@/components/studio";
 import { ProjectFileImport } from "@/components/studio";
 import { getModel, resolvePreset } from "@/lib/studio/models";
@@ -74,7 +74,7 @@ function ArPage() {
         >
           <ArrowLeft size={16} />
         </Link>
-        <div className="from-primary to-primary-deep flex h-8 w-8 items-center justify-center rounded-md bg-linear-to-br">
+        <div className="flex h-8 w-8 items-center justify-center ">
           <SpcMobLogo className="mx-auto h-12 w-auto" />
         </div>
         <div className="leading-tight">
@@ -85,11 +85,6 @@ function ArPage() {
         </div>
         <span className="flex-1" />
         <ProjectFileImport onImport={setImportedProject} compact />
-        <IconButton
-          label={p.layout.theme === "light" ? "Thème sombre" : "Thème clair"}
-          icon={p.layout.theme === "light" ? <Moon size={15} /> : <Sun size={15} />}
-          onClick={p.onTheme}
-        />
       </header>
 
       <main className="relative min-h-72 flex-1">
