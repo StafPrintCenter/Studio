@@ -74,7 +74,7 @@ export const DEFAULT_LAYOUT: LayoutState = {
   rightWidth: 340,
   leftCollapsed: false,
   rightCollapsed: false,
-  theme: "dark",
+  theme: "light",
 };
 
 interface StudioStore {
