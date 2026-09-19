@@ -50,18 +50,18 @@ function BatPage() {
   if (record === "missing") {
     return (
       <Centered>
-              <p className="mb-3">Ce BAT est introuvable sur cet appareil.</p>
-              <p className="mb-4 max-w-sm text-xs">
-                Importez le fichier .studio3d reçu pour visualiser et valider ce travail.
-              </p>
-              <div className="mx-auto mb-4 max-w-xs">
-                <ProjectFileImport
-                  onImport={async (project) => {
-                    setRecord(await saveShared("bat", project));
-                  }}
-                />
-              </div>
-              <Link to="/" className="text-primary underline">Retour au studio</Link>
+        <p className="mb-3">Ce BAT est introuvable sur cet appareil.</p>
+        <p className="mb-4 max-w-sm text-xs">
+          Importez le fichier .studio3d reçu pour visualiser et valider ce travail.
+        </p>
+        <div className="mx-auto mb-4 max-w-xs">
+          <ProjectFileImport
+            onImport={async (project) => {
+              setRecord(await saveShared("bat", project));
+            }}
+          />
+        </div>
+        <Link to="/" className="text-primary underline">Retour au studio</Link>
       </Centered>
     );
   }
