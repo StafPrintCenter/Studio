@@ -1,141 +1,168 @@
-import { Link } from "@tanstack/react-router";
-import { RotateCcw, ArrowLeft, Gamepad2 } from "lucide-react";
+import React, { Suspense, useRef, useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { OrbitControls, Text3D, Center, MeshWobbleMaterial, Sparkles, Environment, Float } from '@react-three/drei';
+import * as THREE from 'three';
+import { Box, RotateCcw, Compass, ExternalLink, TriangleAlert } from 'lucide-react';
 
+const FONT_URL = "https://threejs.org/examples/fonts/helvetiker_regular.typeface.json";
+
+// --- MAILLAGE 3D INTERACTIF & AUTO-ANIMÉ ---
+function MeshErrorObject() {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <group>
+      {/* Effet de flottement physique fluide */}
+      <Float speed={2} rotationIntensity={1} floatIntensity={1.5}>
+        <Sparkles count={50} scale={4} size={2} speed={0.4} color={hovered ? "#ea580c" : "#f97316"} />
+
+        {/* Texte 3D "404" avec réaction au survol */}
+        <Suspense fallback={null}>
+          <Center top>
+            <Text3D
+              font={FONT_URL}
+              size={1.2}
+              height={0.3}
+              curveSegments={12}
+              bevelEnabled
+              bevelThickness={0.02}
+              bevelSize={0.02}
+              onPointerOver={() => setHovered(true)}
+              onPointerOut={() => setHovered(false)}
+            >
+              404
+              <MeshWobbleMaterial
+                color={hovered ? "#ea580c" : "#f97316"}
+                factor={hovered ? 0.4 : 0.15}
+                speed={2.5}
+                roughness={0.15}
+                metalness={0.8}
+              />
+            </Text3D>
+          </Center>
+        </Suspense>
+
+        {/* Cages de maillage fil de fer à géométries imbriquées */}
+        <mesh scale={2.2}>
+          <octahedronGeometry args={[1, 0]} />
+          <meshBasicMaterial color="#cbd5e1" wireframe />
+        </mesh>
+
+        <mesh scale={2.8} rotation={[0.5, 0.5, 0]}>
+          <boxGeometry args={[1, 1, 1]} />
+          <meshBasicMaterial color="#f97316" wireframe transparent opacity={0.25} />
+        </mesh>
+      </Float>
+
+      {/* Grille de sol 3D sous l'objet */}
+      <gridHelper args={[12, 12, "#ea580c", "#e2e8f0"]} position={[0, -2, 0]} />
+    </group>
+  );
+}
+
+// --- COMPOSANT PRINCIPAL ---
 export function NotFoundComponent() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col justify-between p-4 md:p-8 select-none bg-background text-foreground overflow-hidden">
-      {/* Motifs d'arrière-plan */}
-      <div className="pointer-events-none absolute inset-0 grid-field opacity-50" />
+    <div className="min-h-screen bg-[#fdfbf7] text-slate-800 flex flex-col justify-between font-sans selection:bg-[#f97316] selection:text-white">
 
-      {/* Header minimaliste */}
-      <header className="relative z-10 mx-auto flex w-full max-w-2xl items-center justify-between font-mono text-xs text-muted-foreground">
-        <span className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-destructive animate-pulse" />
-          SYSTEM_ERR // CODE_404
+      {/* 1. NAVBAR - Zone dédiée et isolée en haut */}
+      <header className="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between border-b border-slate-200/60 z-20">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#f97316] to-[#ea580c] flex items-center justify-center shadow-md shadow-[#f97316]/20">
+            <Box className="w-5 h-5 text-white" />
+          </div>
+          <span className="font-bold text-lg tracking-wider text-slate-900 font-['Space_Grotesk']">
+            SPC <span className="text-[#f97316]">3D STUDIO</span>
+          </span>
+        </div>
+        <span className="text-xs font-mono px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-600 shadow-sm flex items-center gap-1.5">
+          <TriangleAlert className="w-3.5 h-3.5 text-amber-500" />
+          ERR_MODEL_NOT_FOUND (404)
         </span>
-        <span>CONSOLE_PORTABLE_V1</span>
       </header>
 
-      {/* Contenu principal : La Manette de Jeu */}
-      <main className="relative z-10 my-auto mx-auto flex w-full max-w-lg flex-col items-center py-6">
+      {/* 2. MAIN CONTENT - Layout Split 50/50 (Grille 2 colonnes) */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
 
-        {/* BOÎTIER DE LA MANETTE */}
-        <div className="relative w-full rounded-3xl border-2 border-border bg-card p-6 shadow-2xl backdrop-blur-md sm:p-8">
-
-          {/* LED de statut sur le boîtier */}
-          <div className="flex items-center justify-between pb-4">
-            <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-destructive shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
-              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
-                POWER
-              </span>
-            </div>
-            <div className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-              SPC-ARCADE
-            </div>
+        {/* Colonne Gauche : Simulation 3D Isolé dans son propre Canvas */}
+        <div className="w-full h-95 sm:h-112.5 lg:h-125 bg-slate-100/50 border border-slate-200/80 rounded-3xl overflow-hidden relative shadow-inner">
+          <div className="absolute top-4 left-4 z-10 text-[10px] font-mono text-slate-400 bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-md border border-slate-200">
+            VIEWPORT_3D // DRAG_TO_ROTATE
           </div>
 
-          {/* ÉCRAN DE LA MANETTE */}
-          <div className="relative rounded-2xl border-2 border-slate-800 bg-slate-950 p-5 shadow-inner text-emerald-400 font-mono">
-            {/* Effet balayage d'écran / Scanlines */}
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-size-[100%_4px] opacity-40 rounded-2xl" />
+          <Canvas
+            camera={{ position: [0, 1, 5], fov: 45 }}
+            dpr={[1, 2]}
+            gl={{ antialias: true }}
+          >
+            <ambientLight intensity={0.7} />
+            <directionalLight position={[5, 8, 5]} intensity={1.2} />
+            <pointLight position={[-5, -5, -5]} intensity={0.5} color="#ea580c" />
 
-            {/* En-tête de l'écran */}
-            <div className="flex items-center justify-between border-b border-emerald-900/60 pb-2 mb-3 text-[11px] text-emerald-600">
-              <span className="flex items-center gap-1">
-                <Gamepad2 size={12} className="text-destructive" /> ERROR_404
-              </span>
-              <span>NO_SIGNAL</span>
-            </div>
+            <Suspense fallback={null}>
+              <Environment preset="studio" />
+              <MeshErrorObject />
+            </Suspense>
 
-            {/* Contenu affiché sur l'écran */}
-            <div className="space-y-2 text-center py-2">
-              <p className="text-xs text-destructive font-bold uppercase tracking-widest">
-                [ GAME OVER ]
-              </p>
-              <h1 className="text-xl sm:text-2xl font-black tracking-tight text-emerald-300 font-display">
-                Niveau Introuvable
-              </h1>
-              <p className="text-xs text-emerald-500/90 leading-relaxed max-w-xs mx-auto">
-                La zone demandée n'est pas chargée dans la mémoire de la console.
-              </p>
-            </div>
+            <OrbitControls
+              enableZoom={false}
+              enablePan={false}
+              minPolarAngle={Math.PI / 3}
+              maxPolarAngle={Math.PI / 1.8}
+              autoRotate
+              autoRotateSpeed={1}
+            />
+          </Canvas>
+        </div>
 
-            {/* Pied d'écran avec prompt clignotant */}
-            <div className="mt-3 pt-2 border-t border-emerald-900/60 flex justify-between items-center text-[10px] text-emerald-600">
-              <span>STAGE_MISSING</span>
-              <span>&gt; PRESS_START_</span>
-            </div>
+        {/* Colonne Droite : Message & Actions (Aucun risque de chevauchement) */}
+        <div className="flex flex-col items-start text-left space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-orange-50 border border-orange-200 text-[#ea580c] text-xs font-mono">
+            <span>Coordonnées spatiales invalides</span>
           </div>
 
-          {/* COMMANDES DE LA MANETTE (Touches & Boutons) */}
-          <div className="mt-8 grid grid-cols-2 items-center gap-6">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 font-['Space_Grotesk'] leading-tight">
+            Maillage 3D introuvable ou supprimé
+          </h1>
 
-            {/* Croix directionnelle (D-Pad) */}
-            <div className="flex justify-center">
-              <div className="relative h-24 w-24">
-                {/* Centre fixe */}
-                <div className="absolute inset-0 m-auto h-8 w-8 bg-muted-foreground/30 rounded-sm" />
-                {/* Haut */}
-                <div className="absolute top-0 left-8 h-8 w-8 bg-muted border border-border rounded-t-md shadow-sm" />
-                {/* Bas */}
-                <div className="absolute bottom-0 left-8 h-8 w-8 bg-muted border border-border rounded-b-md shadow-sm" />
-                {/* Gauche */}
-                <div className="absolute top-8 left-0 h-8 w-8 bg-muted border border-border rounded-l-md shadow-sm" />
-                {/* Droite */}
-                <div className="absolute top-8 right-0 h-8 w-8 bg-muted border border-border rounded-r-md shadow-sm" />
-              </div>
-            </div>
+          <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-xl">
+            La scène 3D ou l&apos;actif de réalité augmentée demandé n&apos;a pas pu être chargé dans le viewport actuel. Vérifiez l&apos;URL ou retournez au menu principal.
+          </p>
 
-            {/* Boutons d'action (A / B) */}
-            <div className="flex items-center justify-center gap-3 rotate-12">
-              {/* Bouton B (Retour) */}
-              <div className="flex flex-col items-center gap-1">
-                <button
-                  onClick={() => window.history.back()}
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-muted shadow-md active:translate-y-0.5 active:shadow-none cursor-pointer transition"
-                  title="Retour"
-                >
-                  <ArrowLeft size={16} className="text-foreground" />
-                </button>
-                <span className="font-mono text-[10px] font-bold text-muted-foreground">R</span>
-              </div>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full pt-2">
+            <a
+              href="/"
+              className="px-6 py-3.5 rounded-xl bg-linear-to-r from-[#f97316] to-[#ea580c] hover:from-[#ea580c] hover:to-[#d97706] text-white font-medium flex items-center justify-center gap-2 shadow-lg shadow-[#f97316]/20 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <RotateCcw className="w-4 h-4" />
+              Retourner au Studio 3D
+            </a>
 
-              {/* Bouton A (Accueil) */}
-              <div className="flex flex-col items-center gap-1">
-                <Link
-                  to="/"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-primary/40 bg-primary shadow-md shadow-primary/20 text-primary-foreground active:translate-y-0.5 active:shadow-none cursor-pointer transition"
-                  title="Accueil"
-                >
-                  <RotateCcw size={16} />
-                </Link>
-                <span className="font-mono text-[10px] font-bold text-muted-foreground">A</span>
-              </div>
-            </div>
-
-          </div>
-
-          {/* Boutons SELECT / START au centre en bas */}
-          <div className="mt-8 flex justify-center items-center gap-6">
-            <div className="flex flex-col items-center gap-1">
-              <button
-                onClick={() => window.history.back()}
-                className="h-3 w-10 rounded-full bg-muted-foreground/40 border border-border active:opacity-60 cursor-pointer"
-              />
-              <span className="font-mono text-[9px] font-bold text-muted-foreground">RETOUR</span>
-            </div>
-
-            <div className="flex flex-col items-center gap-1">
-              <Link
-                to="/"
-                className="h-3 w-10 rounded-full bg-primary/70 border border-primary active:opacity-60 cursor-pointer"
-              />
-              <span className="font-mono text-[9px] font-bold text-muted-foreground">Accueil</span>
-            </div>
+            <a
+              href="https://tools.stafprint.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 text-slate-700 font-medium flex items-center justify-center gap-2 shadow-sm transition-all duration-200 hover:bg-slate-50 hover:text-slate-900"
+            >
+              <Compass className="w-4 h-4 text-[#f97316]" />
+              Explorer SPC Tools
+              <ExternalLink className="w-3.5 h-3.5 opacity-60" />
+            </a>
           </div>
         </div>
       </main>
+
+      {/* 3. FOOTER - Zone dédiée en bas */}
+      <footer className="w-full max-w-7xl mx-auto px-6 py-6 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono z-20">
+        <div>
+          © 2026 <span className="text-slate-800 font-bold">STAF PRINT CENTER</span>. Tous droits réservés.
+        </div>
+        <div className="flex items-center gap-6">
+          <a href="https://stafprint.com" className="hover:text-slate-900 transition-colors">stafprint.com</a>
+          <a href="https://brief.stafprint.com" className="hover:text-[#f97316] transition-colors">brief.stafprint.com</a>
+          <a href="https://tools.stafprint.com" className="hover:text-[#f97316] transition-colors">tools.stafprint.com</a>
+        </div>
+      </footer>
     </div>
   );
 }
