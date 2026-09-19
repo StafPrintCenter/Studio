@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, type ReactNode } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { IconButton } from "./IconButton";
+import { IconButton } from "./";
 import { cn } from "@/lib/utils";
 
 interface Props {
