@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Box, Ruler, ArrowLeft } from "lucide-react";
-import { ArViewer } from "@/components/studio/ArViewer";
+import { ArViewer } from "@/components/studio";
 import { ProjectFileImport } from "@/components/studio/ProjectFileImport";
 import { getModel, resolvePreset } from "@/lib/studio/models";
 import { loadShared, type SharedRecord } from "@/lib/studio/project";
