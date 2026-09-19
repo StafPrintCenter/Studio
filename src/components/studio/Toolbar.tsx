@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MODELS, type ModelKind } from "@/lib/studio/models";
 import type { LayoutState, ProjectState } from "@/lib/studio/store";
-import { SpcDeskLogo } from "@/components/site";
+import { SpcDeskLogo } from "@/components/studio";
 
 interface Props {
   project: ProjectState;
