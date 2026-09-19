@@ -99,7 +99,6 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const theme = useStudio((s) => s.layout.theme);
-
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle("dark", theme !== "light");
