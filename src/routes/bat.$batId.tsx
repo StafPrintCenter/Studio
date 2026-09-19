@@ -181,7 +181,7 @@ function BatPage() {
                 className="w-full"
                 onClick={async () => {
                   const file = projectFile(p);
-                  const shareData = { title: `BAT validé — ${p.name}`, text: details, files: [file] };
+                  const shareData = { title: `BAT validé - ${p.name}`, text: details, files: [file] };
                   if (navigator.share && (!navigator.canShare || navigator.canShare(shareData))) {
                     try {
                       await navigator.share(shareData);
