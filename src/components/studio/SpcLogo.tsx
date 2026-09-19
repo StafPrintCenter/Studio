@@ -1,9 +1,11 @@
 import logos from "@/assets/logos.json";
-import { useDarkMode } from "@/hooks/use-dark-mode";
+import { useStudio } from "@/lib/studio/store";
 import { cn } from "@/lib/utils";
 
 export function SpcMobLogo({ className }: { className?: string }) {
-  const dark = useDarkMode();
+  const theme = useStudio((s) => s.layout.theme);
+  const dark = theme !== "light";
+
   return (
     <img
       src={dark ? logos.mw : logos.mc}
@@ -16,7 +18,8 @@ export function SpcMobLogo({ className }: { className?: string }) {
 }
 
 export function SpcDeskLogo({ className }: { className?: string }) {
-  const dark = useDarkMode();
+  const theme = useStudio((s) => s.layout.theme);
+  const dark = theme !== "light";
 
   return (
     <img
