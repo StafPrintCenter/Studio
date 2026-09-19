@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 import { Copy, ExternalLink, Share2 } from "lucide-react";
 import { toast } from "sonner";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { makeQr, shareUrl } from "@/lib/studio/project";
 
