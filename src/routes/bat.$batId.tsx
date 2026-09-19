@@ -75,7 +75,7 @@ function BatPage() {
     `BAT 3D validé - ${p.name}`,
     `Support : ${model.name}`,
     `Dimensions : ${model.dims.w} × ${model.dims.h}${model.dims.d ? ` × ${model.dims.d}` : ""} cm`,
-    `Finition : ${finish?.name ?? "—"}`,
+    `Finition : ${finish?.name ?? "-"}`,
     `Référence : ${record.id}`,
   ].join("\n");
   const whatsappUrl = `https://wa.me/2290160300607?text=${encodeURIComponent(details)}`;
