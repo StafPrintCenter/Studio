@@ -136,7 +136,7 @@ function BatPage() {
             <Row label="Fichier visuel" value={p.artwork?.name ?? "Aucun"} />
             <Row
               label="Définition"
-              value={p.artwork ? `${p.artwork.width} × ${p.artwork.height} px` : "—"}
+              value={p.artwork ? `${p.artwork.width} × ${p.artwork.height} px` : "-"}
             />
             <Row
               label="Créé le"
