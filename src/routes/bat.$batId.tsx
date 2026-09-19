@@ -25,6 +25,10 @@ import {
   updateShared,
   type SharedRecord,
 } from "@/lib/studio/project";
+import { SITE } from "@/data/site";
+
+const PAGE_TITLE = `${SITE.tool} - Outils de modélisation 3D et de réalité augmentée | ${SITE.name}`;
+const PAGE_DESC = `Studio 3D professionnel pour prévisualiser vos supports imprimés, générer un BAT et les voir en réalité augmentée ${SITE.name}.`;
 
 export const Route = createFileRoute("/bat/$batId")({
   ssr: false,
