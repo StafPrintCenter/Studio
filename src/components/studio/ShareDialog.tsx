@@ -43,13 +43,13 @@ export function ShareDialog({ open, onOpenChange, title, description, url }: Pro
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-sm overflow-y-auto p-4 sm:p-6">
+      <DialogContent className="max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-sm min-w-0 overflow-hidden p-4 sm:p-6">
         <DialogHeader>
           <DialogTitle className="font-display">{title}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
 
-        <div className="flex flex-col items-center gap-3">
+        <div className="flex w-full min-w-0 flex-col items-center gap-3">
           {qr && (
             <img
               src={qr}
@@ -58,8 +58,12 @@ export function ShareDialog({ open, onOpenChange, title, description, url }: Pro
             />
           )}
 
-          <div className="flex w-full items-center gap-2 rounded border border-border bg-muted px-2 py-1.5">
-            <code className="num min-w-0 flex-1 truncate text-center text-sm">
+          {/* Bloc d'affichage de l'URL contraint en Grid */}
+          <div className="grid w-full grid-cols-[1fr_auto] items-center gap-2 rounded border border-border bg-muted px-2 py-1.5">
+            <code
+              className="num min-w-0 overflow-hidden text-ellipsis whitespace-nowrap text-left text-xs sm:text-sm"
+              title={url}
+            >
               {url}
             </code>
 
