@@ -3,7 +3,7 @@ import { toast } from "sonner";
 import { ImagePlus } from "lucide-react";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CatalogPanel, EcosystemBar, InspectorPanel, ShareDialog, SidePanel, Toolbar } from "./";
-import { Scene3D, type SceneApi } from "./scene/Scene3D";
+import { Scene3D, type SceneApi } from "./scene";
 import { useStudio } from "@/lib/studio/store";
 import { getModel, resolvePreset } from "@/lib/studio/models";
 import { ACCEPTED_IMAGE, downloadDataUrl, exportProjectFile, isImageFile, readArtwork, readProjectFile, saveShared, slugify } from "@/lib/studio/project";
