@@ -1,6 +1,5 @@
 import { Upload, Download, Share2, Rotate3d, Crosshair, Maximize2, FileCheck2, Smartphone, Settings2, Sun, Moon, LayoutTemplate } from "lucide-react";
-import { IconButton } from "./";
-import { NumericControl } from "./NumericControl";
+import { IconButton, NumericControl } from "./";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
