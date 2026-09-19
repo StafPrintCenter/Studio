@@ -16,19 +16,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SPC 3D Studio & AR — STAF PRINT CENTER" },
-      {
-        name: "description",
-        content:
-          "Studio 3D professionnel pour prévisualiser vos supports imprimés, générer un BAT et les voir en réalité augmentée.",
-      },
-      { name: "author", content: "STAF PRINT CENTER" },
-      { property: "og:title", content: "SPC 3D Studio & AR" },
-      {
-        property: "og:description",
-        content: "Prévisualisation 3D, BAT et réalité augmentée pour vos supports imprimés.",
-      },
+      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=5" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESC },
+      { name: "author", content: `${SITE.manager}` },
+
+      /* Open Graph / Facebook / WhatsApp */
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESC },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
