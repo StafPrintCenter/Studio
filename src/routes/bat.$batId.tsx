@@ -156,7 +156,7 @@ function BatPage() {
                 };
                 await updateShared("bat", next);
                 setRecord(next);
-                toast.success("BAT validé — merci !");
+                toast.success("BAT validé - merci !");
               }}
             >
               <CheckCircle2 size={15} />
