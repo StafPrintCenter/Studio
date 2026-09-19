@@ -9,8 +9,8 @@ import { getModel, resolvePreset, FINISHES, ENVIRONMENTS } from "@/lib/studio/mo
 import { downloadBlob, loadShared, projectFile, saveShared, slugify, updateShared, type SharedRecord } from "@/lib/studio/project";
 import { SITE } from "@/data/site";
 
-const PAGE_TITLE = `Réalité augmentée - ${SITE.tool} | ${SITE.name}`;
-const PAGE_DESC = `"Visualisez votre support imprimé en réalité augmentée, à l'échelle 1:1, directement depuis votre mobile. | ${SITE.name}.`;
+const PAGE_TITLE = `BAT 3D - ${SITE.tool} | ${SITE.name}`;
+const PAGE_DESC = `Bon à tirer 3D : inspectez votre support imprimé et validez la production. | ${SITE.name}.`;
 
 export const Route = createFileRoute("/bat/$batId")({
   ssr: false,
