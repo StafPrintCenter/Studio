@@ -6,4 +6,6 @@ export { InspectorPanel } from "./InspectorPanel";
 export { NumericControl } from "./NumericControl";
 export { ProjectFileImport } from "./ProjectFileImport";
 export { ShareDialog } from "./ShareDialog";
+export { SidePanel } from "./SidePanel";
+export { Toolbar } from "./Toolbar";
 export { SpcMobLogo, SpcDeskLogo } from "./SpcLogo";
