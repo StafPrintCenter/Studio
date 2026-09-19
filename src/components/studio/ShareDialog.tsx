@@ -98,7 +98,7 @@ export function ShareDialog({ open, onOpenChange, title, description, url }: Pro
 
             <Button
               size="sm"
-              onClick={() => window.open(url, "_blank")}
+              onClick={() => window.open(url, "_self")}
             >
               <ExternalLink size={13} />
               Ouvrir
