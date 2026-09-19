@@ -1,6 +1,5 @@
 import { ExternalLink } from "lucide-react";
 import { SITE, SITE_LINK } from "@/data/site";
-import { stripProtocol } from "@/lib/domain";
 
 const LINKS = [
   {
@@ -37,7 +36,7 @@ export function EcosystemBar() {
         </a>
       ))}
       <span className="flex-1" />
-      <span className="num hidden md:inline"> {stripProtocol(SITE_LINK.studioUrl)}</span>
+      <span className="num hidden md:inline font-bold">{SITE.tool}</span>
     </div>
   );
 }
