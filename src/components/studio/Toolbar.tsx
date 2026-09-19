@@ -32,17 +32,7 @@ export function Toolbar(p: Props) {
   return (
     <header className="flex h-12 shrink-0 items-center gap-2 border-b border-border bg-surface/80 px-2 backdrop-blur">
       <div className="flex items-center gap-2 pr-1">
-        <div className="from-primary to-primary-deep flex h-7 w-7 items-center justify-center rounded-md bg-linear-to-br">
-          <Box size={16} className="text-primary-foreground" />
-        </div>
-        <div className="hidden leading-none sm:block">
-          <div className="font-display text-[13px] font-bold tracking-tight">
-            SPC 3D Studio
-          </div>
-          <div className="text-[10px] tracking-wide text-muted-foreground">
-            STAF PRINT CENTER
-          </div>
-        </div>
+        <SpcDeskLogo className="mx-auto h-12 w-auto" />
       </div>
 
       <div className="mx-1 h-6 w-px bg-border" />
