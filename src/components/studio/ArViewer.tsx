@@ -81,7 +81,7 @@ export function ArViewer({ project }: { project: ProjectState }) {
   }, []);
 
   return (
-    <div className="relative h-full min-h-[18rem] w-full">
+    <div className="relative h-full min-h-72 w-full">
       <div className="pointer-events-none absolute h-px w-px overflow-hidden opacity-0">
         <Canvas gl={{ preserveDrawingBuffer: true }}>
           <group name="ar-support">
