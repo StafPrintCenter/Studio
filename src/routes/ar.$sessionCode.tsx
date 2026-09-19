@@ -15,16 +15,13 @@ export const Route = createFileRoute("/ar/$sessionCode")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Réalité augmentée - SPC 3D Studio" },
+      { title: PAGE_TITLE },
       {
-        name: "description",
-        content:
-          "Visualisez votre support imprimé en réalité augmentée, à l'échelle 1:1, directement depuis votre mobile.",
+        name: "description", content: PAGE_DESC
       },
-      { property: "og:title", content: "Mode AR - STAF PRINT CENTER" },
+      { property: "og:title", content: PAGE_TITLE },
       {
-        property: "og:description",
-        content: "Placez votre roll-up, bâche ou enseigne dans votre espace réel en AR.",
+        property: "og:description", content: PAGE_DESC
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
