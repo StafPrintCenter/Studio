@@ -107,7 +107,7 @@ function BatPage() {
 
       <div className="grid flex-1 grid-cols-1 lg:grid-cols-[1fr_340px]">
         <div className="relative min-h-[55vh]">
-          <Scene3D project={{ ...p, autoRotate: true }} className="!absolute inset-0" />
+          <Scene3D project={{ ...p, autoRotate: true }} className="absolute inset-0" />
         </div>
 
         <aside className="panel-scroll space-y-5 border-t border-border p-4 lg:border-t-0 lg:border-l">
