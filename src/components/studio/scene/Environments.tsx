@@ -199,7 +199,7 @@ function Plant({ position, scale = 1 }: { position: Vec3; scale?: number }) {
   );
 }
 
-/** Real photo studio: white cyclorama, C-stands, softboxes, camera tripod, apple boxes. */
+/** Real photo studio: flat working floor, warm backdrop, stands, softboxes and camera gear. */
 function PhotoStudio() {
   return (
     <group name="env-decor">
