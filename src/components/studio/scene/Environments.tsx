@@ -210,7 +210,7 @@ function PhotoStudio() {
       </mesh>
       <mesh position={[0, 4.4, -4.6]} receiveShadow>
         <planeGeometry args={[20, 9]} />
-        <meshStandardMaterial color="#f2f3f4" roughness={0.9} />
+        <meshStandardMaterial color="#ddd8c9" roughness={0.9} />
       </mesh>
       {/* curved cove joining floor and wall */}
       <mesh position={[0, 0.9, -3.7]} rotation-x={-Math.PI / 2} receiveShadow>
