@@ -22,7 +22,17 @@ const LINKS = [
 export function EcosystemBar() {
   return (
     <div className="flex h-7 shrink-0 items-center gap-3 border-t border-border bg-surface/60 px-3 text-[11px] text-muted-foreground">
-      <span className="hidden sm:inline font-bold">Écosystème {SITE.name}</span>
+      <span className="hidden sm:inline font-bold">
+        Écosystème {" "}
+        <a
+          href={SITE_LINK.landingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 transition-colors hover:text-primary underline"
+        >
+          {SITE.name}
+        </a>
+      </span>
       {LINKS.map((l) => (
         <a
           key={l.href}
