@@ -203,10 +203,10 @@ function Plant({ position, scale = 1 }: { position: Vec3; scale?: number }) {
 function PhotoStudio() {
   return (
     <group name="env-decor">
-      {/* seamless white cyclorama floor + wall */}
-      <mesh rotation-x={-Math.PI / 2} receiveShadow>
-        <planeGeometry args={[22, 22]} />
-        <meshStandardMaterial color="#e9eaec" roughness={0.75} />
+      {/* Continuous hard studio floor: no rolled sweep competing with floor-standing supports. */}
+      <mesh position={[0, -0.012, 0]} rotation-x={-Math.PI / 2} receiveShadow>
+        <planeGeometry args={[24, 24]} />
+        <meshStandardMaterial color="#c9c7c1" roughness={0.82} />
       </mesh>
       <mesh position={[0, 4.4, -4.6]} receiveShadow>
         <planeGeometry args={[20, 9]} />
