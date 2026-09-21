@@ -57,6 +57,8 @@ export function EcosystemBar() {
           <ExternalLink size={10} />
         </a>
       ))}
+
+      {/* Espaceur flexible */}
       <span className="flex-1" />
       <span className="num hidden md:inline font-bold">{SITE.tool}</span>
     </div>
