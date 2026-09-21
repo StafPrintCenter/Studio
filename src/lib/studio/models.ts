@@ -33,7 +33,7 @@ export const MODELS: SupportModel[] = [
     id: "counter",
     name: "Comptoir d'accueil",
     category: "PLV & Stands",
-    description: "Comptoir promotionnel courbe avec façade personnalisable et tablette haute.",
+    description: "Comptoir promotionnel personnalisable, disponible en formes courbe, fermée ou d’angle.",
     dims: { w: 90, h: 100, d: 45 },
     printArea: { w: 90, h: 90 },
     material: "PVC expansé + tablette stratifiée",
