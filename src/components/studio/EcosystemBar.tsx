@@ -43,6 +43,8 @@ export function EcosystemBar() {
           {SITE.name}
         </a>
       </span>
+
+      {/* Liens de l'écosystème */}
       {LINKS.map((l) => (
         <a
           key={l.href}
