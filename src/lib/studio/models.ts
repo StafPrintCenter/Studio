@@ -169,7 +169,7 @@ export const MODELS: SupportModel[] = [
       { label: "32 × 40 × 14 cm", w: 32, h: 40, d: 14 },
       { label: "18 × 24 × 8 cm", w: 18, h: 24, d: 8 },
     ],
-    camera: [1.5, 1.2, 2.6],
+    camera: [0.48, 0.42, 0.72],
   },
   {
     id: "tshirt",
