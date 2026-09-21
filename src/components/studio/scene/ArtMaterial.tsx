@@ -14,7 +14,7 @@ export function ArtMaterial({ map, mask, finish, color = "#f5f5f4", side }: Prop
   const common = {
     map: map ?? null,
     side: side ?? THREE.FrontSide,
-    toneMapped: true,
+    toneMapped: map ? false : true,
   };
 
   if (finish === "foil") {
