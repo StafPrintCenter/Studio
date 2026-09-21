@@ -117,11 +117,24 @@ export function Support({ model, uv, finish, artwork, mask }: Props) {
     const panelY = h / 2 + 1.15;
     const wallX = -w / 2 - 0.34;
     return (
-      <group position={[0, 1.5, 0]}>
-        {/* wall */}
-        <mesh position={[-w / 2 - 0.22, -0.2, -0.1]} receiveShadow>
-          <boxGeometry args={[0.12, 2.6, 1.6]} />
-          <meshStandardMaterial color="#8d8478" roughness={0.95} />
+      <group>
+        <mesh position={[wallX, 1.2, -0.12]} receiveShadow>
+          <boxGeometry args={[0.14, 2.4, 1.15]} />
+          <meshStandardMaterial color="#a79c8e" roughness={0.92} />
+        </mesh>
+        <mesh position={[wallX + 0.13, panelY, 0]} rotation-z={Math.PI / 2} castShadow>
+          <cylinderGeometry args={[0.025, 0.025, 0.34, 18]} />
+          <meshStandardMaterial color="#525a63" metalness={0.82} roughness={0.3} />
+        </mesh>
+        {[-0.18, 0.18].map((yOffset) => (
+          <mesh key={yOffset} position={[wallX + 0.22, panelY + yOffset * h, 0]} rotation-z={Math.PI / 2} castShadow>
+            <cylinderGeometry args={[0.012, 0.012, 0.24, 14]} />
+            <meshStandardMaterial color="#68717a" metalness={0.8} roughness={0.34} />
+          </mesh>
+        ))}
+        <mesh position={[0, panelY, 0]} castShadow receiveShadow>
+          <boxGeometry args={[w, h, panelDepth]} />
+          <meshStandardMaterial color="#d9dde0" metalness={0.12} roughness={0.5} />
         </mesh>
         {/* bracket */}
         <mesh position={[-w / 2 - 0.09, 0, 0]} castShadow>
