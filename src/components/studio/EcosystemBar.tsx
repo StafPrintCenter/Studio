@@ -31,6 +31,7 @@ export function EcosystemBar() {
 
   return (
     <div className="flex h-7 shrink-0 items-center gap-3 border-t border-border bg-surface/60 px-3 text-[11px] text-muted-foreground">
+      {/* Label Écosystème */}
       <span className="hidden sm:inline font-bold">
         Écosystème {" "}
         <a
