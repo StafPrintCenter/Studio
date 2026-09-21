@@ -113,6 +113,9 @@ export function Support({ model, uv, finish, artwork, mask }: Props) {
   }
 
   if (model.id === "flag") {
+    const panelDepth = Math.max(0.025, d);
+    const panelY = h / 2 + 1.15;
+    const wallX = -w / 2 - 0.34;
     return (
       <group position={[0, 1.5, 0]}>
         {/* wall */}
