@@ -38,9 +38,9 @@ export const MODELS: SupportModel[] = [
     printArea: { w: 90, h: 90 },
     material: "PVC expansé + tablette stratifiée",
     presets: [
-      { label: "Compact 70 × 95 cm", w: 70, h: 95, d: 40 },
-      { label: "Standard 90 × 100 cm", w: 90, h: 100, d: 45 },
-      { label: "Large 120 × 105 cm", w: 120, h: 105, d: 50 },
+      { label: "Courbe - 90 × 100 cm", w: 90, h: 100, d: 45 },
+      { label: "Fermé - 100 × 100 cm", w: 100, h: 100, d: 50 },
+      { label: "Angle - 120 × 100 cm", w: 120, h: 100, d: 60 },
     ],
     camera: [1.8, 1.25, 2.8],
   },
