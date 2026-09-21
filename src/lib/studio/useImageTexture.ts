@@ -21,8 +21,8 @@ export function useImageTexture(dataUrl: string | null | undefined, srgb = true)
         return;
       }
       tex.colorSpace = srgb ? THREE.SRGBColorSpace : THREE.NoColorSpace;
-      tex.wrapS = THREE.RepeatWrapping;
-      tex.wrapT = THREE.RepeatWrapping;
+      tex.wrapS = THREE.ClampToEdgeWrapping;
+      tex.wrapT = THREE.ClampToEdgeWrapping;
       tex.center.set(0.5, 0.5);
       tex.anisotropy = 8;
       created = tex;
