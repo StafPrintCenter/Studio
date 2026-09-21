@@ -136,13 +136,12 @@ export function Support({ model, uv, finish, artwork, mask }: Props) {
           <boxGeometry args={[w, h, panelDepth]} />
           <meshStandardMaterial color="#d9dde0" metalness={0.12} roughness={0.5} />
         </mesh>
-        {/* bracket */}
-        <mesh position={[-w / 2 - 0.09, 0, 0]} castShadow>
-          <boxGeometry args={[0.16, 0.04, 0.04]} />
-          <meshStandardMaterial color="#6b7280" metalness={0.8} roughness={0.35} />
+        <mesh position={[0, panelY, panelDepth / 2 + 0.001]} castShadow>
+          <planeGeometry args={[w - 0.018, h - 0.018]} />
+          <ArtMaterial map={art} mask={maskTex} finish={finish} />
         </mesh>
-        <mesh castShadow receiveShadow>
-          <boxGeometry args={[w, h, Math.max(0.02, d / 100)]} />
+        <mesh position={[0, panelY, -panelDepth / 2 - 0.001]} rotation-y={Math.PI} castShadow>
+          <planeGeometry args={[w - 0.018, h - 0.018]} />
           <ArtMaterial map={art} mask={maskTex} finish={finish} />
         </mesh>
       </group>
@@ -150,6 +149,56 @@ export function Support({ model, uv, finish, artwork, mask }: Props) {
   }
 
   if (model.id === "counter") {
+    const variant = model.variantLabel ?? "Courbe";
+    const topY = h + 0.035;
+
+    if (variant.startsWith("Fermé")) {
+      return (
+        <group>
+          <mesh position={[0, h / 2, 0]} castShadow receiveShadow>
+            <boxGeometry args={[w, h, d]} />
+            <meshStandardMaterial color="#e7e4de" roughness={0.7} />
+          </mesh>
+          <mesh position={[0, h / 2, d / 2 + 0.002]} castShadow>
+            <planeGeometry args={[w - 0.025, h - 0.025]} />
+            <ArtMaterial map={art} mask={maskTex} finish={finish} />
+          </mesh>
+          <mesh position={[0, topY, 0]} castShadow>
+            <boxGeometry args={[w + 0.1, 0.07, d + 0.08]} />
+            <meshStandardMaterial color="#34383d" roughness={0.38} />
+          </mesh>
+        </group>
+      );
+    }
+
+    if (variant.startsWith("Angle")) {
+      const wingW = w * 0.58;
+      return (
+        <group>
+          <mesh position={[-w * 0.21, h / 2, d * 0.2]} castShadow receiveShadow>
+            <boxGeometry args={[wingW, h, d * 0.58]} />
+            <meshStandardMaterial color="#e7e4de" roughness={0.7} />
+          </mesh>
+          <mesh position={[w * 0.23, h / 2, -d * 0.16]} castShadow receiveShadow>
+            <boxGeometry args={[w * 0.34, h, d]} />
+            <meshStandardMaterial color="#e7e4de" roughness={0.7} />
+          </mesh>
+          <mesh position={[-w * 0.21, h / 2, d * 0.495]} castShadow>
+            <planeGeometry args={[wingW - 0.025, h - 0.025]} />
+            <ArtMaterial map={art} mask={maskTex} finish={finish} />
+          </mesh>
+          <mesh position={[w * 0.405, h / 2, -d * 0.16]} rotation-y={Math.PI / 2} castShadow>
+            <planeGeometry args={[d - 0.025, h - 0.025]} />
+            <ArtMaterial map={art} mask={maskTex} finish={finish} />
+          </mesh>
+          <mesh position={[0, topY, 0]} castShadow>
+            <boxGeometry args={[w + 0.1, 0.07, d + 0.08]} />
+            <meshStandardMaterial color="#34383d" roughness={0.38} />
+          </mesh>
+        </group>
+      );
+    }
+
     return (
       <group position={[0, h / 2, 0]}>
         <mesh position={[0, 0, 0]} castShadow receiveShadow>
@@ -277,27 +326,46 @@ export function Support({ model, uv, finish, artwork, mask }: Props) {
     );
   }
 
-  // bag
+  // Kraft bag: five panels leave the top visibly open and avoid box-material indexing issues.
   const bw = model.dims.w / 100;
   const bh = model.dims.h / 100;
   const bd = model.dims.d / 100;
+  const paper = "#c49a6c";
+  const sidePaper = "#ad8052";
   return (
-    <group position={[0, bh / 2 + 0.001, 0]}>
-      <mesh castShadow receiveShadow>
-        <boxGeometry args={[bw, bh, bd]} />
-        <meshStandardMaterial attach="material-0" color="#c49a6c" roughness={0.9} />
-        <meshStandardMaterial attach="material-1" color="#c49a6c" roughness={0.9} />
-        <meshStandardMaterial attach="material-2" color="#b98f61" roughness={0.95} />
-        <meshStandardMaterial attach="material-3" color="#a9835a" roughness={0.95} />
-        <ArtMaterial map={art} mask={maskTex} finish={finish} color="#c49a6c" />
-        <meshStandardMaterial attach="material-5" color="#c49a6c" roughness={0.9} />
+    <group>
+      <mesh position={[0, bh / 2, -bd / 2]} castShadow receiveShadow>
+        <boxGeometry args={[bw, bh, 0.008]} />
+        <meshStandardMaterial color={paper} roughness={0.92} />
       </mesh>
-      {[-bw / 5, bw / 5].map((x) => (
-        <mesh key={x} position={[x, bh / 2 + 0.03, bd / 2 - 0.01]} castShadow>
-          <torusGeometry args={[0.045, 0.005, 8, 24, Math.PI]} />
-          <meshStandardMaterial color="#8a6a45" roughness={0.8} />
-        </mesh>
-      ))}
+      <mesh position={[-bw / 2, bh / 2, 0]} castShadow receiveShadow>
+        <boxGeometry args={[0.008, bh, bd]} />
+        <meshStandardMaterial color={sidePaper} roughness={0.96} />
+      </mesh>
+      <mesh position={[bw / 2, bh / 2, 0]} castShadow receiveShadow>
+        <boxGeometry args={[0.008, bh, bd]} />
+        <meshStandardMaterial color={sidePaper} roughness={0.96} />
+      </mesh>
+      <mesh position={[0, 0.005, 0]} castShadow receiveShadow>
+        <boxGeometry args={[bw, 0.01, bd]} />
+        <meshStandardMaterial color="#9b7047" roughness={0.98} />
+      </mesh>
+      <mesh position={[0, bh / 2, bd / 2]} castShadow receiveShadow>
+        <boxGeometry args={[bw, bh, 0.008]} />
+        <meshStandardMaterial color={paper} roughness={0.92} />
+      </mesh>
+      <mesh position={[0, bh / 2, bd / 2 + 0.005]} castShadow>
+        <planeGeometry args={[bw - 0.018, bh - 0.025]} />
+        <ArtMaterial map={art} mask={maskTex} finish={finish} color={paper} />
+      </mesh>
+      <mesh position={[0, bh + 0.05, bd / 2 + 0.006]} scale={[1.35, 1, 1]} castShadow>
+        <torusGeometry args={[0.065, 0.006, 10, 28, Math.PI]} />
+        <meshStandardMaterial color="#6f4f31" roughness={0.82} />
+      </mesh>
+      <mesh position={[0, bh + 0.05, -bd / 2 - 0.006]} rotation-y={Math.PI} scale={[1.35, 1, 1]} castShadow>
+        <torusGeometry args={[0.065, 0.006, 10, 28, Math.PI]} />
+        <meshStandardMaterial color="#6f4f31" roughness={0.82} />
+      </mesh>
     </group>
   );
 }
