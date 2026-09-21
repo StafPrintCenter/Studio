@@ -42,7 +42,7 @@ export const MODELS: SupportModel[] = [
       { label: "Fermé - 100 × 100 cm", w: 100, h: 100, d: 50 },
       { label: "Angle - 120 × 100 cm", w: 120, h: 100, d: 60 },
     ],
-    camera: [1.8, 1.25, 2.8],
+    camera: [1.45, 1.05, 2.1],
   },
   {
     id: "rollup",
@@ -90,7 +90,7 @@ export const MODELS: SupportModel[] = [
       { label: "60 × 40 cm", w: 60, h: 40 },
       { label: "80 × 60 cm", w: 80, h: 60 },
     ],
-    camera: [2.2, 1.0, 2.8],
+    camera: [0.95, 1.3, 1.65],
   },
   {
     id: "box",
