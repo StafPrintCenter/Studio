@@ -52,7 +52,7 @@ export function ArtMaterial({ map, mask, finish, color = "#f5f5f4", side }: Prop
         metalness={0.08}
         roughness={mask ? 1 : 0.5}
         roughnessMap={mask ?? null}
-        envMapIntensity={1.25}
+        envMapIntensity={0.68}
       />
     );
   }
