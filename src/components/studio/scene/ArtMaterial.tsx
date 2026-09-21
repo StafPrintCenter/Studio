@@ -57,14 +57,16 @@ export function ArtMaterial({ map, mask, finish, color = "#f5f5f4", side }: Prop
     );
   }
 
-  return (
-    <meshStandardMaterial
-      key={map?.uuid ?? "matte-empty"}
-      {...common}
-      color={map ? "#ffffff" : color}
-      metalness={0}
-      roughness={0.88}
-      envMapIntensity={0.7}
-    />
-  );
+  if (map) {
+    return (
+      <meshBasicMaterial
+        key={map.uuid}
+        map={map}
+        side={side ?? THREE.FrontSide}
+        toneMapped={false}
+      />
+    );
+  }
+
+  return <meshStandardMaterial color={color} side={side ?? THREE.FrontSide} metalness={0} roughness={0.88} />;
 }
