@@ -49,7 +49,7 @@ export function ArtMaterial({ map, mask, finish, color = "#f5f5f4", side }: Prop
         key={`${map?.uuid ?? "spot-empty"}-${mask?.uuid ?? "no-mask"}`}
         {...common}
         color={map ? "#ffffff" : color}
-        metalness={0.08}
+        metalness={0.02}
         roughness={mask ? 1 : 0.5}
         roughnessMap={mask ?? null}
         envMapIntensity={0.68}
