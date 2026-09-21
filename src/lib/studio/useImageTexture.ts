@@ -25,6 +25,9 @@ export function useImageTexture(dataUrl: string | null | undefined, srgb = true)
       tex.wrapT = THREE.ClampToEdgeWrapping;
       tex.center.set(0.5, 0.5);
       tex.anisotropy = 8;
+      tex.generateMipmaps = true;
+      tex.minFilter = THREE.LinearMipmapLinearFilter;
+      tex.magFilter = THREE.LinearFilter;
       created = tex;
       setTexture(tex);
       invalidate();
