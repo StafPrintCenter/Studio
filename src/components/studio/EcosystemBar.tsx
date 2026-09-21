@@ -21,6 +21,14 @@ const LINKS = [
 ];
 
 export function EcosystemBar() {
+  const socialLinks = [
+    { label: "Facebook", href: SITE.socials.facebook, Icon: FacebookIcon },
+    { label: "Instagram", href: SITE.socials.instagram, Icon: InstagramIcon },
+    { label: "LinkedIn", href: SITE.socials.linkedin, Icon: LinkedinIcon },
+    { label: "X", href: SITE.socials.x, Icon: XIcon },
+    { label: "WhatsApp", href: SITE.whatsappLink, Icon: WhatsAppIcon },
+  ];
+
   return (
     <div className="flex h-7 shrink-0 items-center gap-3 border-t border-border bg-surface/60 px-3 text-[11px] text-muted-foreground">
       <span className="hidden sm:inline font-bold">
