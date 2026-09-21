@@ -60,7 +60,28 @@ export function EcosystemBar() {
 
       {/* Espaceur flexible */}
       <span className="flex-1" />
-      <span className="num hidden md:inline font-bold">{SITE.tool}</span>
+
+      {/* Tool Name (Visible sur desktop large) */}
+      <span className="num hidden md:inline font-bold mr-2">{SITE.tool}</span>
+
+      {/* Séparateur (Visible sur desktop) */}
+      <span className="hidden md:inline text-muted-foreground/30">|</span>
+
+      {/* Liens Sociaux */}
+      <div className="flex items-center gap-1.5">
+        {socialLinks.map(({ label, href, Icon }) => (
+          <a
+            key={label}
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={label}
+            className="rounded-md p-1 transition-colors hover:bg-accent hover:text-primary"
+          >
+            <Icon className="size-3.5" />
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
