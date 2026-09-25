@@ -25,7 +25,6 @@ export function EcosystemBar() {
     { label: "LinkedIn", href: SITE.socials.linkedin, Icon: LinkedinIcon },
     { label: "Facebook", href: SITE.socials.facebook, Icon: FacebookIcon },
     { label: "Instagram", href: SITE.socials.instagram, Icon: InstagramIcon },
-    { label: "LinkedIn", href: SITE.socials.linkedin, Icon: LinkedinIcon },
     { label: "X", href: SITE.socials.x, Icon: XIcon },
     { label: "WhatsApp", href: SITE.whatsappLink, Icon: WhatsAppIcon },
   ];
