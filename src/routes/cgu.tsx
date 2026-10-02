@@ -20,7 +20,11 @@ export const Route = createFileRoute("/cgu")({
   component: CguPage,
 });
 
-const SECTIONS: { title: string; body: string[] }[] = [
+const BRIEF_URL = stripProtocol(SITE_LINK.briefUrl);
+const TOOLKIT_URL = stripProtocol(SITE_LINK.toolkitUrl);
+const DOCS_URL = stripProtocol(SITE_LINK.docsUrl);
+
+const SECTIONS: { title: string; body: (string | React.ReactNode)[] }[] = [
   {
     title: "1. Objet",
     body: [
@@ -64,9 +68,21 @@ const SECTIONS: { title: string; body: string[] }[] = [
     ],
   },
   {
-    title: "7. Liens externes",
+    title: "7. Liens externes et écosystème",
     body: [
-      `L'application peut contenir des liens vers d'autres services de l'écosystème ${SITE.name} (${SITE_LINK.briefUrl}, ${SITE_LINK.toolkitUrl}, ${SITE_LINK.docsUrl}) ou vers des applications tierces (WhatsApp, messagerie). ${SITE.name} n'est pas responsable de leurs contenus ni de leurs politiques de confidentialité.`,
+      <>
+        L'application peut contenir des liens vers d'autres services de l'écosystème {SITE.name} (
+        <a href={SITE_LINK.briefUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+          {BRIEF_URL}
+        </a>,{" "}
+        <a href={SITE_LINK.toolkitUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+          {TOOLKIT_URL}
+        </a>,{" "}
+        <a href={SITE_LINK.docsUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+          {DOCS_URL}
+        </a>
+        ) ou vers des applications tierces (WhatsApp, messagerie). Bien que ces plateformes soient éditées par {SITE.name}, chacune dispose de ses propres conditions d'utilisation, politiques de confidentialité et modalités spécifiques régissant leurs services respectifs.
+      </>,
     ],
   },
   {
@@ -78,7 +94,16 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "9. Contact",
     body: [
-      `Pour toute question relative au service ou aux présentes conditions : ${SITE.email} - WhatsApp : ${SITE.whatsapp}.`,
+      <>
+        Pour toute question relative au service ou aux présentes conditions, vous pouvez nous contacter par email à{" "}
+        <a href={`mailto:${SITE.email}`} className="underline hover:text-primary">
+          {SITE.email}
+        </a>{" "}
+        ou par WhatsApp au{" "}
+        <a href={SITE.whatsappLink} target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">
+          {SITE.whatsapp}
+        </a>.
+      </>
     ],
   },
 ];
