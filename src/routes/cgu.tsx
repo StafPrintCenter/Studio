@@ -65,7 +65,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "7. Liens externes",
     body: [
-      "L'application peut contenir des liens vers d'autres services de l'écosystème STAF PRINT (brief.stafprint.com, tools.stafprint.com) ou vers des applications tierces (WhatsApp, messagerie). STAF PRINT CENTER n'est pas responsable de leurs contenus ni de leurs politiques de confidentialité.",
+      "L'application peut contenir des liens vers d'autres services de l'écosystème STAF PRINT (brief.stafprint.com, tools.stafprint.com) ou vers des applications tierces (WhatsApp, messagerie). ${SITE.name} n'est pas responsable de leurs contenus ni de leurs politiques de confidentialité.`,
     ],
   },
   {
