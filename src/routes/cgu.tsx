@@ -24,8 +24,8 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "1. Objet",
     body: [
-      `Les présentes conditions générales d'utilisation (ci-après « CGU ») régissent l'accès et l'utilisation de l'application ${SITE.tool} (${SITE_LINK.studioUrl}), éditée par ${SITE.name}.",
-      "L'application permet de prévisualiser des supports imprimés en 3D, de générer des bons à tirer (BAT) partageables et de visualiser les supports en réalité augmentée à l'échelle 1:1.`,
+      `Les présentes conditions générales d'utilisation (ci-après « CGU ») régissent l'accès et l'utilisation de l'application ${SITE.tool} (${stripProtocol(SITE_LINK.studioUrl)}), éditée par ${SITE.name}.`,
+      "L'application permet de prévisualiser des supports imprimés en 3D, de générer des bons à tirer (BAT) partageables et de visualiser les supports en réalité augmentée à l'échelle 1:1.",
     ],
   },
   {
