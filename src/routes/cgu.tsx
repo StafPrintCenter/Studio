@@ -8,18 +8,10 @@ const PAGE_DESC = `"Conditions générales d'utilisation du studio 3D et des mod
 export const Route = createFileRoute("/cgu")({
   head: () => ({
     meta: [
-      { title: "Conditions générales d'utilisation — SPC 3D Studio & AR" },
-      {
-        name: "description",
-        content:
-          "Conditions générales d'utilisation du studio 3D et des modules BAT et réalité augmentée de STAF PRINT CENTER.",
-      },
-      { property: "og:title", content: "CGU — SPC 3D Studio & AR" },
-      {
-        property: "og:description",
-        content:
-          "Conditions d'utilisation du simulateur 3D, du BAT client et de la réalité augmentée STAF PRINT CENTER.",
-      },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESC },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESC },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
