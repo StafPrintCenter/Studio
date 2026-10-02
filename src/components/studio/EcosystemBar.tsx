@@ -67,6 +67,13 @@ export function EcosystemBar() {
       {/* Séparateur (Visible sur desktop) */}
       <span className="hidden md:inline text-muted-foreground/30">|</span>
 
+      <Link to="/cgu" className="transition-colors hover:text-primary">
+        CGU
+      </Link>
+
+      {/* Séparateur (Visible sur desktop) */}
+      <span className="hidden md:inline text-muted-foreground/30">|</span>
+
       {/* Liens Sociaux */}
       <div className="flex items-center gap-1.5">
         {socialLinks.map(({ label, href, Icon }) => (
