@@ -43,18 +43,8 @@ function IndexPage() {
 
         <div className="mx-auto max-w-sm rounded-xl border border-border bg-surface/50 p-4 space-y-3">
           <p className="text-xs text-muted-foreground leading-relaxed">
-            Les pages de <strong>validation BAT</strong> et de <strong>réalité augmentée (AR)</strong> restent pleinement accessibles sur mobile. Si vous n'avez pas de lien, vous pouvez en demander un directement à notre équipe.
+            Les pages de <strong>validation BAT</strong> et de <strong>réalité augmentée (AR)</strong> restent pleinement accessibles sur mobile. Si vous n'avez pas de lien, vous pouvez en demander.
           </p>
-
-          <a
-            href={SITE.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
-          >
-            <MessageCircle size={14} />
-            Demander un lien BAT / AR sur WhatsApp
-          </a>
         </div>
 
         <Link
