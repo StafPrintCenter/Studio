@@ -2,6 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { SITE } from "@/data/site";
 
+const PAGE_TITLE = `Conditions générales d'utilisation - ${SITE.tool} | ${SITE.name}`;
+const PAGE_DESC = `"Conditions générales d'utilisation du studio 3D et des modules BAT et réalité augmentée de ${SITE.name}.`;
+
 export const Route = createFileRoute("/cgu")({
   head: () => ({
     meta: [
