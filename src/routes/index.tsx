@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { MonitorSmartphone } from "lucide-react";
+import { MonitorSmartphone, MessageCircle } from "lucide-react";
 import { StudioApp } from "@/components/studio/StudioApp";
 import { SITE, SITE_LINK } from "@/data/site";
+import { stripProtocol } from "@/lib/domain";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const PAGE_TITLE = `${SITE.tool} - Outils de modélisation 3D et de réalité augmentée | ${SITE.name}`;
@@ -33,15 +34,29 @@ function IndexPage() {
         </div>
         <div className="space-y-2">
           <h1 className="font-display text-xl font-semibold">
-            {SITE.tool} est disponible que sur ordinateur
+            {SITE.tool} n'est disponible que sur ordinateur
           </h1>
           <p className="mx-auto max-w-sm text-sm text-muted-foreground">
-            L'édition des supports 3D nécessite un écran plus large. Ouvrez {SITE_LINK.studioUrl} sur un ordinateur pour créer ou modifier vos projets.
+            L'édition et la personnalisation des supports 3D nécessitent un écran plus large. Rendez-vous sur {stripProtocol(SITE_LINK.studioUrl)} depuis votre ordinateur pour créer ou modifier vos projets.
           </p>
         </div>
-        <p className="max-w-sm text-xs text-muted-foreground">
-          Les liens de validation BAT et de réalité augmentée restent consultables sur mobile.
-        </p>
+
+        <div className="mx-auto max-w-sm rounded-xl border border-border bg-surface/50 p-4 space-y-3">
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Les pages de <strong>validation BAT</strong> et de <strong>réalité augmentée (AR)</strong> restent pleinement accessibles sur mobile. Si vous n'avez pas de lien, vous pouvez en demander un directement à notre équipe.
+          </p>
+
+          <a
+            href={SITE.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            <MessageCircle size={14} />
+            Demander un lien BAT / AR sur WhatsApp
+          </a>
+        </div>
+
         <Link
           to="/cgu"
           className="text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline"
