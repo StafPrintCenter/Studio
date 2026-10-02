@@ -118,3 +118,5 @@ function CguPage() {
     </div>
   );
 }
+
+export default CguPage;
