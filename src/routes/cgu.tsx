@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { SITE } from "@/data/site";
+import { SITE, SITE_LINK } from "@/data/site";
 
 const PAGE_TITLE = `Conditions générales d'utilisation - ${SITE.tool} | ${SITE.name}`;
 const PAGE_DESC = `"Conditions générales d'utilisation du studio 3D et des modules BAT et réalité augmentée de ${SITE.name}.`;
@@ -97,7 +97,7 @@ function CguPage() {
           Conditions générales d'utilisation
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          SPC 3D Studio &amp; AR — STAF PRINT CENTER · Dernière mise à jour : octobre 2026
+          {SITE.tool} - {SITE.name} · Dernière mise à jour : 02 octobre 2026
         </p>
 
         <div className="mt-8 space-y-8">
