@@ -45,7 +45,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
     title: "4. Propriété intellectuelle",
     body: [
       "L'utilisateur garantit détenir les droits nécessaires sur les visuels qu'il importe dans le studio et s'engage à ne pas utiliser de contenus contrefaits, illicites ou portant atteinte aux droits de tiers.",
-      "L'application, ses interfaces, ses modèles 3D et sa charte graphique demeurent la propriété exclusive de STAF PRINT CENTER. Toute reproduction non autorisée est interdite.",
+      `L'application, ses interfaces, ses modèles 3D et sa charte graphique demeurent la propriété exclusive de ${SITE.name}. Toute reproduction non autorisée est interdite.`,
     ],
   },
   {
@@ -58,7 +58,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "6. Responsabilité",
     body: [
-      "STAF PRINT CENTER ne saurait être tenu responsable des pertes de données locales, des indisponibilités temporaires du service ou des dommages indirects liés à l'utilisation de l'application.",
+      `${SITE.name} ne saurait être tenu responsable des pertes de données locales, des indisponibilités temporaires du service ou des dommages indirects liés à l'utilisation de l'application.`,
       "La visualisation en réalité augmentée dépend des capacités de l'appareil de l'utilisateur ; sa disponibilité n'est pas garantie sur tous les terminaux.",
     ],
   },
