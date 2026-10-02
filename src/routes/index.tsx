@@ -1,6 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { MonitorSmartphone } from "lucide-react";
 import { StudioApp } from "@/components/studio/StudioApp";
-import { SITE } from "@/data/site";
+import { SITE, SITE_LINK } from "@/data/site";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const PAGE_TITLE = `${SITE.tool} - Outils de modélisation 3D et de réalité augmentée | ${SITE.name}`;
 const PAGE_DESC = `Studio 3D professionnel pour prévisualiser vos supports imprimés, générer un BAT et les voir en réalité augmentée ${SITE.name}.`;
@@ -31,11 +33,11 @@ function IndexPage() {
         </div>
         <div className="space-y-2">
           <h1 className="font-display text-xl font-semibold">
-            Le studio 3D se travaille sur ordinateur
+            {SITE.tool} est disponible que sur ordinateur
           </h1>
           <p className="mx-auto max-w-sm text-sm text-muted-foreground">
             L'édition des supports 3D nécessite un écran plus large. Ouvrez
-            studio.stafprint.com sur un ordinateur pour créer ou modifier vos projets.
+            ${SITE_LINK.studioUrl} sur un ordinateur pour créer ou modifier vos projets.
           </p>
         </div>
         <p className="max-w-sm text-xs text-muted-foreground">
