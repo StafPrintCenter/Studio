@@ -31,7 +31,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
     title: "2. Accès au service",
     body: [
       "Le studio d'édition 3D est optimisé pour une utilisation sur ordinateur. Les pages de validation BAT et de réalité augmentée restent accessibles sur mobile.",
-      "Le service est accessible sans création de compte. STAF PRINT CENTER se réserve le droit de modifier, suspendre ou interrompre tout ou partie du service, notamment pour maintenance.",
+      `Le service est accessible sans création de compte. ${SITE.name} se réserve le droit de modifier, suspendre ou interrompre tout ou partie du service, notamment pour maintenance.`,
     ],
   },
   {
