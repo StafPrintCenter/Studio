@@ -36,8 +36,7 @@ function IndexPage() {
             {SITE.tool} est disponible que sur ordinateur
           </h1>
           <p className="mx-auto max-w-sm text-sm text-muted-foreground">
-            L'édition des supports 3D nécessite un écran plus large. Ouvrez
-            ${SITE_LINK.studioUrl} sur un ordinateur pour créer ou modifier vos projets.
+            L'édition des supports 3D nécessite un écran plus large. Ouvrez {SITE_LINK.studioUrl} sur un ordinateur pour créer ou modifier vos projets.
           </p>
         </div>
         <p className="max-w-sm text-xs text-muted-foreground">
