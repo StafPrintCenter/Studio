@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Text3D, Center, MeshWobbleMaterial, Sparkles, Environment, Float } from '@react-three/drei';
 import { Box, RotateCcw, Compass, ExternalLink, TriangleAlert } from 'lucide-react';
