@@ -77,7 +77,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "9. Contact",
     body: [
-      "Pour toute question relative au service ou aux présentes conditions : contact@stafprint.com — WhatsApp : +229 01 60 30 06 07.",
+      `Pour toute question relative au service ou aux présentes conditions : ${SITE.email} - WhatsApp : ${SITE.whatsapp}.`,
     ],
   },
 ];
