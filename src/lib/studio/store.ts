@@ -51,6 +51,7 @@ export const DEFAULT_PROJECT: ProjectState = {
   name: "Projet sans titre",
   model: "rollup",
   preset: 0,
+  customDims: undefined,
   uv: { ...DEFAULT_UV },
   finish: "matte",
   environment: "studio",
