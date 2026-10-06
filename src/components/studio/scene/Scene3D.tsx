@@ -71,7 +71,7 @@ function Bridge({
 }
 
 export function Scene3D({ project, apiRef, interactive = true, className }: Props) {
-  const model = resolvePreset(getModel(project.model), project.preset);
+  const model = resolvePreset(getModel(project.model), project.preset, project.customDims);
   const controlsRef = useRef<any>(null);
   const home = model.camera.map((v) => v * 1.35) as [number, number, number];
 
