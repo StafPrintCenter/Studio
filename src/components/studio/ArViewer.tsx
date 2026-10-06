@@ -35,7 +35,7 @@ function GlbBuilder({
 }
 
 export function ArViewer({ project }: { project: ProjectState }) {
-  const model = resolvePreset(getModel(project.model), project.preset);
+  const model = resolvePreset(getModel(project.model), project.preset, project.customDims);
   const [glb, setGlb] = useState<string | null>(null);
   const [mvReady, setMvReady] = useState(false);
   const [failed, setFailed] = useState(false);
