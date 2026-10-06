@@ -34,6 +34,30 @@ export interface SupportModel {
   variantLabel?: string;
 }
 
+export type SupportType = "Souple" | "Rigide" | "Volume" | "Textile";
+export type FormatType = "Portrait" | "Paysage" | "Carré" | "Volume";
+
+const VOLUME_MODELS = new Set<ModelKind>(["counter", "box", "bag", "mug", "cap"]);
+const SOFT_MODELS = new Set<ModelKind>(["rollup", "banner", "feather-flag", "leaflet", "flyer"]);
+const TEXTILE_MODELS = new Set<ModelKind>(["tshirt", "cap"]);
+
+export function getSupportType(model: SupportModel): SupportType {
+  if (TEXTILE_MODELS.has(model.id)) return "Textile";
+  if (VOLUME_MODELS.has(model.id)) return "Volume";
+  if (SOFT_MODELS.has(model.id)) return "Souple";
+  return "Rigide";
+}
+
+export function getFormatType(model: SupportModel): FormatType {
+  if (VOLUME_MODELS.has(model.id) || model.dims.d >= Math.min(model.dims.w, model.dims.h) * 0.2) {
+    return "Volume";
+  }
+  const ratio = model.dims.w / model.dims.h;
+  if (ratio > 1.12) return "Paysage";
+  if (ratio < 0.88) return "Portrait";
+  return "Carré";
+}
+
 export const MODELS: SupportModel[] = [
   {
     id: "counter",
@@ -147,6 +171,98 @@ export const MODELS: SupportModel[] = [
     camera: [0, 0.35, 2.6],
   },
   {
+    id: "business-card",
+    name: "Carte de visite",
+    category: "Impression",
+    description: "Carte professionnelle recto-verso sur papier couché ou création premium.",
+    dims: { w: 8.5, h: 5.5, d: 0.04 },
+    printArea: { w: 8.5, h: 5.5 },
+    material: "Carton couché 350 g",
+    presets: [
+      { label: "Standard — 8,5 × 5,5 cm", w: 8.5, h: 5.5 },
+      { label: "Carrée — 6,5 × 6,5 cm", w: 6.5, h: 6.5 },
+      { label: "Longue — 9 × 5 cm", w: 9, h: 5 },
+    ],
+    camera: [0.13, 0.1, 0.2],
+  },
+  {
+    id: "flyer",
+    name: "Flyer",
+    category: "Impression",
+    description: "Flyer publicitaire simple feuille, imprimable en recto ou recto-verso.",
+    dims: { w: 14.8, h: 21, d: 0.03 },
+    printArea: { w: 14.8, h: 21 },
+    material: "Papier couché 135 g",
+    presets: [
+      { label: "A6 — 10,5 × 14,8 cm", w: 10.5, h: 14.8 },
+      { label: "A5 — 14,8 × 21 cm", w: 14.8, h: 21 },
+      { label: "A4 — 21 × 29,7 cm", w: 21, h: 29.7 },
+      { label: "DL — 9,9 × 21 cm", w: 9.9, h: 21 },
+    ],
+    camera: [0.18, 0.19, 0.42],
+  },
+  {
+    id: "rigid-sign",
+    name: "Panneau rigide",
+    category: "Signalétique",
+    description: "Panneau imprimé résistant pour enseigne, chantier, direction ou immobilier.",
+    dims: { w: 80, h: 60, d: 0.3 },
+    printArea: { w: 80, h: 60 },
+    material: "Dibond 3 mm",
+    presets: [
+      { label: "60 × 40 cm", w: 60, h: 40 },
+      { label: "80 × 60 cm", w: 80, h: 60 },
+      { label: "100 × 70 cm", w: 100, h: 70 },
+      { label: "120 × 80 cm", w: 120, h: 80 },
+    ],
+    camera: [0.9, 0.75, 1.75],
+  },
+  {
+    id: "feather-flag",
+    name: "Oriflamme",
+    category: "PLV & Stands",
+    description: "Drapeau publicitaire mobile avec mât flexible et pied lesté pour événements.",
+    dims: { w: 70, h: 250, d: 35 },
+    printArea: { w: 70, h: 210 },
+    material: "Maille polyester 115 g",
+    presets: [
+      { label: "S — 60 × 200 cm", w: 60, h: 200, d: 32 },
+      { label: "M — 70 × 250 cm", w: 70, h: 250, d: 35 },
+      { label: "L — 80 × 320 cm", w: 80, h: 320, d: 40 },
+    ],
+    camera: [0.25, 1.4, 3.6],
+  },
+  {
+    id: "a-frame",
+    name: "Chevalet stop-trottoir",
+    category: "Signalétique",
+    description: "Chevalet double face pliable pour promotions, menus et signalétique extérieure.",
+    dims: { w: 60, h: 100, d: 65 },
+    printArea: { w: 50, h: 70 },
+    material: "Aluminium + panneaux PVC",
+    presets: [
+      { label: "A1 — 59,4 × 84,1 cm", w: 60, h: 100, d: 65 },
+      { label: "A0 — 84,1 × 118,9 cm", w: 86, h: 136, d: 82 },
+      { label: "Compact — 50 × 70 cm", w: 52, h: 84, d: 55 },
+    ],
+    camera: [1.3, 1.05, 2.15],
+  },
+  {
+    id: "mug",
+    name: "Mug personnalisé",
+    category: "Objets personnalisés",
+    description: "Mug en céramique avec marquage panoramique pour cadeaux et communication.",
+    dims: { w: 12, h: 9.5, d: 8.2 },
+    printArea: { w: 20, h: 8 },
+    material: "Céramique blanche",
+    presets: [
+      { label: "Classique — 325 ml", w: 12, h: 9.5, d: 8.2 },
+      { label: "Expresso — 180 ml", w: 9, h: 7, d: 6.8 },
+      { label: "Grande tasse — 450 ml", w: 14, h: 11.5, d: 9.5 },
+    ],
+    camera: [0.2, 0.15, 0.25],
+  },
+  {
     id: "leaflet",
     name: "Dépliant",
     category: "Impression",
@@ -233,7 +349,25 @@ export const ENVIRONMENTS: { id: EnvId; name: string; hint: string }[] = [
 ];
 
 /** Apply a catalogue preset to the model dimensions. */
-export function resolvePreset(model: SupportModel, presetIndex: number): SupportModel {
+export function resolvePreset(
+  model: SupportModel,
+  presetIndex: number,
+  customDims?: { w: number; h: number; d: number },
+): SupportModel {
+  if (customDims) {
+    const scale = Math.max(
+      customDims.w / model.dims.w,
+      customDims.h / model.dims.h,
+      customDims.d / model.dims.d,
+    );
+    return {
+      ...model,
+      dims: customDims,
+      printArea: { w: customDims.w, h: customDims.h },
+      camera: model.camera.map((value) => value * Math.max(0.35, scale)) as [number, number, number],
+      variantLabel: "Dimensions personnalisées",
+    };
+  }
   const p = model.presets[presetIndex];
   if (!p) return model;
   const dims = { w: p.w, h: p.h, d: p.d ?? model.dims.d };
