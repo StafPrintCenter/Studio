@@ -134,11 +134,20 @@ export function StudioApp() {
             <CatalogPanel
               current={project.model}
               preset={project.preset}
+              customDims={project.customDims}
               onSelect={(id) => {
                 set("model", id);
                 set("preset", 0);
+                set("customDims", undefined);
               }}
-              onPreset={(i) => set("preset", i)}
+              onPreset={(i) => {
+                set("preset", i);
+                set("customDims", undefined);
+              }}
+              onCustomDims={(dims) => {
+                set("preset", -1);
+                set("customDims", dims);
+              }}
             />
           </SidePanel>
 
@@ -158,7 +167,7 @@ export function StudioApp() {
               if (f) void handleImage(f, "artwork");
             }}
           >
-            <Scene3D project={{ ...project }} apiRef={sceneApi} className="!absolute inset-0" />
+            <Scene3D project={{ ...project }} apiRef={sceneApi} className="absolute inset-0" />
 
             <div className="pointer-events-none absolute top-2 left-2 rounded-md border border-border/60 bg-surface/70 px-2 py-1 backdrop-blur">
               <div className="font-display text-[11px] font-semibold">{model.name}</div>
