@@ -96,13 +96,13 @@ export function Scene3D({ project, apiRef, interactive = true, className }: Prop
         <StudioLighting envId={project.environment} />
         <EnvironmentDecor envId={project.environment} />
         <group name="support">
-        <Support
-          model={model}
-          uv={project.uv}
-          finish={project.finish}
-          artwork={project.artwork?.dataUrl ?? null}
-          mask={project.spotMask?.dataUrl ?? null}
-        />
+          <Support
+            model={model}
+            uv={project.uv}
+            finish={project.finish}
+            artwork={project.artwork?.dataUrl ?? null}
+            mask={project.spotMask?.dataUrl ?? null}
+          />
         </group>
         {project.shadows && (
           <ContactShadows
