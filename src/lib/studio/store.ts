@@ -79,9 +79,18 @@ export const DEFAULT_LAYOUT: LayoutState = {
   theme: "light",
 };
 
+export interface SavedDims {
+  id: string;
+  label: string;
+  w: number;
+  h: number;
+  d: number;
+}
+
 interface StudioStore {
   project: ProjectState;
   layout: LayoutState;
+  savedDims: Partial<Record<ModelKind, SavedDims[]>>;
   hydrated: boolean;
   set: <K extends keyof ProjectState>(key: K, value: ProjectState[K]) => void;
   setUv: (patch: Partial<UvTransform>) => void;
@@ -90,6 +99,8 @@ interface StudioStore {
   resetProject: () => void;
   setLayout: (patch: Partial<LayoutState>) => void;
   resetLayout: () => void;
+  addSavedDims: (model: ModelKind, entry: Omit<SavedDims, "id">) => void;
+  removeSavedDims: (model: ModelKind, id: string) => void;
 }
 
 export const useStudio = create<StudioStore>()(
@@ -97,6 +108,7 @@ export const useStudio = create<StudioStore>()(
     (setState) => ({
       project: { ...DEFAULT_PROJECT },
       layout: { ...DEFAULT_LAYOUT },
+      savedDims: {},
       hydrated: false,
       set: (key, value) =>
         setState((s) => ({ project: { ...s.project, [key]: value } })),
@@ -107,6 +119,17 @@ export const useStudio = create<StudioStore>()(
       resetProject: () => setState({ project: { ...DEFAULT_PROJECT } }),
       setLayout: (patch) => setState((s) => ({ layout: { ...s.layout, ...patch } })),
       resetLayout: () => setState({ layout: { ...DEFAULT_LAYOUT } }),
+      addSavedDims: (model, entry) =>
+        setState((s) => ({
+          savedDims: {
+            ...s.savedDims,
+            [model]: [...(s.savedDims[model] ?? []), { ...entry, id: `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}` }],
+          },
+        })),
+      removeSavedDims: (model, id) =>
+        setState((s) => ({
+          savedDims: { ...s.savedDims, [model]: (s.savedDims[model] ?? []).filter((e) => e.id !== id) },
+        })),
     }),
     {
       name: "spc-studio-state",
@@ -115,7 +138,7 @@ export const useStudio = create<StudioStore>()(
         setItem: (n: string, v: string) => kvSet(n, v),
         removeItem: (n: string) => kvDel(n),
       })),
-      partialize: (s) => ({ project: s.project, layout: s.layout }) as never,
+      partialize: (s) => ({ project: s.project, layout: s.layout, savedDims: s.savedDims }) as never,
       onRehydrateStorage: () => () => {
         useStudio.setState({ hydrated: true });
       },
