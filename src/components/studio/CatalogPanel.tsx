@@ -58,7 +58,7 @@ function SavedDimsSection({ model, current, customDims, onApply }: { model: Mode
                 <button type="button" onClick={() => onApply({ w: e.w, h: e.h, d: e.d })} title={`${e.w}×${e.h}×${e.d} cm`} className="num px-1.5 py-0.5 text-[10px]">
                   {e.label}
                 </button>
-                <button type="button" aria-label={`Supprimer ${e.label}`} onClick={() => remove(model, e.id)} className="px-1 text-muted-foreground hover:text-destructive">
+                <button type="button" aria-label={`Supprimer ${e.label}`} onClick={() => remove(model, e.id)} className="px-1 text-muted-foreground hover:text-destructive cursor-pointer">
                   <X size={10} />
                 </button>
               </span>
