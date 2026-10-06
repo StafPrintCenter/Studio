@@ -22,7 +22,7 @@ export function StudioApp() {
     url: string;
   }>({ open: false, title: "", description: "", url: "" });
 
-  const model = resolvePreset(getModel(project.model), project.preset);
+  const model = resolvePreset(getModel(project.model), project.preset, project.customDims);
 
   const handleImage = useCallback(
     async (file: File, target: "artwork" | "spotMask") => {
