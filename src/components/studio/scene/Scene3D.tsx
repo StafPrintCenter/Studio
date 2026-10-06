@@ -119,7 +119,7 @@ export function Scene3D({ project, apiRef, interactive = true, className }: Prop
           enablePan={interactive}
           enableDamping
           dampingFactor={0.08}
-          minDistance={0.8}
+          minDistance={0.08}
           maxDistance={14}
           maxPolarAngle={Math.PI / 2 - 0.02}
           target={[0, home[1] * 0.6, 0]}
