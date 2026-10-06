@@ -68,7 +68,7 @@ function BatPage() {
   }
 
   const p = record.project;
-  const model = resolvePreset(getModel(p.model), p.preset);
+  const model = resolvePreset(getModel(p.model), p.preset, p.customDims);
   const finish = FINISHES.find((f) => f.id === p.finish);
   const env = ENVIRONMENTS.find((e) => e.id === p.environment);
   const approved = record.status === "approved";
