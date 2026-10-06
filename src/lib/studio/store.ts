@@ -34,6 +34,7 @@ export interface ProjectState {
   name: string;
   model: ModelKind;
   preset: number;
+  customDims: { w: number; h: number; d: number } | undefined;
   uv: UvTransform;
   finish: FinishId;
   environment: EnvId;
