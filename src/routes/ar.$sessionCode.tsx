@@ -62,7 +62,7 @@ function ArPage() {
 
   const p = importedProject ?? (record !== "missing" && record ? record.project : null);
   if (!p) return null;
-  const model = resolvePreset(getModel(p.model), p.preset);
+  const model = resolvePreset(getModel(p.model), p.preset, p.customDims);
 
   return (
     <div className="flex h-dvh min-h-128 flex-col bg-background text-foreground">
