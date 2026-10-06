@@ -55,7 +55,7 @@ function SavedDimsSection({ model, current, customDims, onApply }: { model: Mode
           <div className="flex flex-wrap gap-1">
             {saved.map((e) => (
               <span key={e.id} className={cn("flex items-center rounded-md border border-border", same(e) && "border-primary/60 bg-primary/15 text-primary")}>
-                <button type="button" onClick={() => onApply({ w: e.w, h: e.h, d: e.d })} title={`${e.w}×${e.h}×${e.d} cm`} className="num px-1.5 py-0.5 text-[10px]">
+                <button type="button" onClick={() => onApply({ w: e.w, h: e.h, d: e.d })} title={`${e.w}×${e.h}×${e.d} cm`} className="num px-1.5 py-0.5 text-[10px] cursor-pointer">
                   {e.label}
                 </button>
                 <button type="button" aria-label={`Supprimer ${e.label}`} onClick={() => remove(model, e.id)} className="px-1 text-muted-foreground hover:text-destructive cursor-pointer">
