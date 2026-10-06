@@ -1,5 +1,7 @@
 import { useMemo, useState } from "react";
-import { Layers, Ruler, Search, SlidersHorizontal, X } from "lucide-react";
+import { Layers, Ruler, Save, Search, SlidersHorizontal, X } from "lucide-react";
+import { toast } from "sonner";
+import { useStudio } from "@/lib/studio/store";
 import { MODELS, getFormatType, getModel, getSupportType, resolvePreset, type ModelKind } from "@/lib/studio/models";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -16,6 +18,57 @@ interface Props {
 }
 
 const ALL = "all";
+
+type Dims = { w: number; h: number; d: number };
+
+function SavedDimsSection({ model, current, customDims, onApply }: { model: ModelKind; current: Dims; customDims: Dims | undefined; onApply: (d: Dims) => void }) {
+  const saved = useStudio((s) => s.savedDims[model]) ?? [];
+  const add = useStudio((s) => s.addSavedDims);
+  const remove = useStudio((s) => s.removeSavedDims);
+  const [name, setName] = useState("");
+  const save = () => {
+    const label = name.trim() || `${current.w}×${current.h}×${current.d} cm`;
+    add(model, { label, ...current });
+    setName("");
+    toast.success(`Préréglage « ${label} » enregistré`);
+  };
+  const same = (e: Dims) => customDims && e.w === customDims.w && e.h === customDims.h && e.d === customDims.d;
+  return (
+    <div className="mt-2 space-y-1.5">
+      <div className="flex gap-1">
+        <Input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && save()}
+          placeholder="Nom du préréglage"
+          aria-label="Nom du préréglage"
+          maxLength={40}
+          className="h-7 px-1.5 text-[10px]"
+        />
+        <Button type="button" variant="outline" size="sm" onClick={save} aria-label="Enregistrer le préréglage" className="h-7 px-2 text-[10px]">
+          <Save size={11} /> Enregistrer
+        </Button>
+      </div>
+      {saved.length > 0 && (
+        <div className="space-y-1">
+          <span className="text-[9px] font-semibold tracking-wide text-muted-foreground uppercase">Mes préréglages</span>
+          <div className="flex flex-wrap gap-1">
+            {saved.map((e) => (
+              <span key={e.id} className={cn("flex items-center rounded-md border border-border", same(e) && "border-primary/60 bg-primary/15 text-primary")}>
+                <button type="button" onClick={() => onApply({ w: e.w, h: e.h, d: e.d })} title={`${e.w}×${e.h}×${e.d} cm`} className="num px-1.5 py-0.5 text-[10px]">
+                  {e.label}
+                </button>
+                <button type="button" aria-label={`Supprimer ${e.label}`} onClick={() => remove(model, e.id)} className="px-1 text-muted-foreground hover:text-destructive">
+                  <X size={10} />
+                </button>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export function CatalogPanel({ current, preset, customDims, onSelect, onPreset, onCustomDims }: Props) {
   const [query, setQuery] = useState("");
@@ -194,6 +247,7 @@ export function CatalogPanel({ current, preset, customDims, onSelect, onPreset, 
                             </label>
                           ))}
                         </div>
+                        <SavedDimsSection model={m.id} current={currentDimensions} customDims={customDims} onApply={onCustomDims} />
                       </div>
                     </div>
                   )}
