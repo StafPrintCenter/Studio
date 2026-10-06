@@ -97,6 +97,7 @@ export function StudioApp() {
           onModel={(m) => {
             set("model", m);
             set("preset", 0);
+            set("customDims", undefined);
           }}
           onName={(v) => set("name", v)}
           onToggleRotate={() => set("autoRotate", !project.autoRotate)}
