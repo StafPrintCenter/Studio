@@ -15,7 +15,7 @@ const LINKS = [
     hint: "Outils PAO"
   },
   {
-    href: `${SITE_LINK.docsUrl}/docs/studio/guide-complet`,
+    href: `${SITE_LINK.docsUrl}/docs/studio/index`,
     label: "Lire la documentation",
     hint: "Docs et guide technique"
   },
